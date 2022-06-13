@@ -5,9 +5,9 @@ module.exports = {
   siteUrl: "https://jeongjaeeom.github.io/",
   links: {
     github: "https://github.com/jeongjaeeom",
-    linkedIn: "https://linkedin.com",
-    facebook: "https://www.facebook.com",
-    instagram: "https://www.instagram.com",
+    linkedIn: "https://www.linkedin.com/in/%EC%A0%95%EC%9E%AC-%EC%97%84-7444ab176/",
+    facebook: "https://www.facebook.com/people/%EC%97%84%EC%A0%95%EC%9E%AC/100030787354172/",
+    //instagram: "https://www.instagram.com",
     email: "mailto:jeongjae.eom@gmail.com",
   },
   utterances: {
