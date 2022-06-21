@@ -10,7 +10,6 @@ tags:
   - container
 series: "Book - Clean Code"
 ---
-# 3장 함수
 
 ## 작게 만들어라!
 
