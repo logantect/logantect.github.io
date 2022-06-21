@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed of devdog.blog]]></title><description><![CDATA[Hello :) I'm DevDog]]></description><link>https://jeongjaeeom.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 21 Jun 2022 02:49:06 GMT</lastBuildDate><item><title><![CDATA[Docker 시작하기]]></title><description><![CDATA[29. Attached & Detached 컨테이너 이해하기 3…]]></description><link>https://jeongjaeeom.github.io/docker/</link><guid isPermaLink="false">https://jeongjaeeom.github.io/docker/</guid><pubDate>Mon, 13 Jun 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;29. Attached &amp;#x26; Detached 컨테이너 이해하기&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed of devdog.blog]]></title><description><![CDATA[Hello :) I'm DevDog]]></description><link>https://jeongjaeeom.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 21 Jun 2022 02:55:16 GMT</lastBuildDate><item><title><![CDATA[Docker 시작하기]]></title><description><![CDATA[29. Attached & Detached 컨테이너 이해하기 3…]]></description><link>https://jeongjaeeom.github.io/docker/</link><guid isPermaLink="false">https://jeongjaeeom.github.io/docker/</guid><pubDate>Mon, 13 Jun 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;29. Attached &amp;#x26; Detached 컨테이너 이해하기&lt;/h2&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# detached mode default&lt;/span&gt;
 $ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; start &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;컨테이너ID&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
 
@@ -27,12 +27,11 @@ $ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; rmi &lt;span 
 
 &lt;span class=&quot;token comment&quot;&gt;# 여러개 이미지 제거&lt;/span&gt;
 $ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; rmi &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;이미지 ID&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;이미지 ID&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;이미지 ID&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;이미지가 더 이상 컨테이너에서 사용되지 않고  중지된 컨테이너에 포함된 경우에만&lt;/p&gt;
-&lt;p&gt;이미지를 제거할 수 있다는 겁니다.&lt;/p&gt;
-&lt;p&gt;중지된 컨테이너가 있는 경우 그 컨테이너에서 사용 중인 이미지를 제거할 수 없습니다.&lt;/p&gt;
-&lt;p&gt;먼저 그 컨테이너를 제거해야 합니다.&lt;/p&gt;
-&lt;p&gt;즉, 컨테이너가 시작되거나 중지되더라도 그 컨테이너에 속한 이미지는 제거할 수 없습니다.&lt;/p&gt;
-&lt;p&gt;우선적으로 컨테이너를 제거해야 합니다.&lt;/p&gt;
+&lt;p&gt;이미지가 더 이상 컨테이너에서 사용되지 않고 중지된 컨테이너에 포함된 경우에만
+이미지를 제거할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;중지된 컨테이너가 있는 경우 그 컨테이너에서 사용 중인 이미지를 제거할 수 없고, 먼저 그 컨테이너를 제거해야 합니다.&lt;/p&gt;
+&lt;p&gt;즉, 컨테이너가 시작되거나 중지되더라도 그 컨테이너에 속한 이미지는 제거할 수 없습니다.
+우선적으로 컨테이너를 제거해야 합니다.&lt;/p&gt;
 &lt;h2&gt;33. 중지된 컨테이너 자동 제거하기&lt;/h2&gt;
 &lt;hr&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; run -p &lt;span class=&quot;token number&quot;&gt;3000&lt;/span&gt;:80 -d -rm 2ddf2ede7d6c&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -43,8 +42,7 @@ $ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; rmi &lt;span 
 &lt;h2&gt;Reference&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://www.udemycom/course/docker-kubernetes-the-practical-guide/&quot;&gt;Docker &amp;#x26; Kubernetes: The Practical Guide [2022 Edition]&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[[Clean Code] 3장 함수]]></title><description><![CDATA[3장 함수 작게 만들어라! 함수를 만드는 첫째 규칙은'작게!'다. 함수를 만드는 둘째 규칙은 '더 작게!'다 함수에서 들여쓰기 수준은 1단이나…]]></description><link>https://jeongjaeeom.github.io/clean-code/</link><guid isPermaLink="false">https://jeongjaeeom.github.io/clean-code/</guid><pubDate>Mon, 13 Jun 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;3장 함수&lt;/h1&gt;
-&lt;h2&gt;작게 만들어라!&lt;/h2&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[[Clean Code] 3장 함수]]></title><description><![CDATA[작게 만들어라! 함수를 만드는 첫째 규칙은'작게!'다. 함수를 만드는 둘째 규칙은 '더 작게!'다 함수에서 들여쓰기 수준은 1단이나…]]></description><link>https://jeongjaeeom.github.io/clean-code/</link><guid isPermaLink="false">https://jeongjaeeom.github.io/clean-code/</guid><pubDate>Mon, 13 Jun 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;작게 만들어라!&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;함수를 만드는 첫째 규칙은&apos;작게!&apos;다. 함수를 만드는 둘째 규칙은 &apos;더 작게!&apos;다&lt;/li&gt;
 &lt;li&gt;함수에서 들여쓰기 수준은 1단이나 2단을 넘어서면 안 된다. 당연한 말이지만, 그래야 함수는 읽고 이해하기 쉬워진다.&lt;/li&gt;
