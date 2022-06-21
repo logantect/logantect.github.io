@@ -1,18 +1,18 @@
-// ---
-// title: "3차 강의 - 클래스 분리 & immutable"
-// description:
-// date: 2022-05-04
-// update: 2022-05-04
-// tags:
-// - tdd
-// - java
-// - clean-code
-// - class
-// - oop
-// - refactoring
-// - immutable
-// series: "TDD, 클린 코드 with Java 14기"
-// ---
+---
+title: "3차 강의 - 클래스 분리 & immutable"
+description:
+date: 2022-05-04
+update: 2022-05-04
+tags:
+- tdd
+- java
+- clean-code
+- class
+- oop
+- refactoring
+- immutable
+series: "TDD, 클린 코드 with Java 14기"
+---
 
 * 객체 설계와 클래스 분리에 대한 두려움과 거부감 줄이기
 * 정성적인 객체 설계의 어려움을 정량적인 원칙을 지키는 방식으로 도전
