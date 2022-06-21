@@ -11,7 +11,7 @@ tags:
 - oop
 - refactoring
 - immutable
-- series: "TDD, 클린 코드 with Java 14기"
+series: "TDD, 클린 코드 with Java 14기"
 ---
 
 * IT업계는 어떤 다른 업계 보다 빠르게 변화하고있다

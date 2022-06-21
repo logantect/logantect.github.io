@@ -11,7 +11,7 @@ tags:
 - oop
 - refactoring
 - immutable
-- series: "TDD, 클린 코드 with Java 14기"
+series: "TDD, 클린 코드 with Java 14기"
 ---
 
 * 객체 설계와 클래스 분리에 대한 두려움과 거부감 줄이기
