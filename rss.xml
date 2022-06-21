@@ -1,4 +1,49 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed of devdog.blog]]></title><description><![CDATA[Hello :) I'm DevDog]]></description><link>https://jeongjaeeom.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 21 Jun 2022 02:46:00 GMT</lastBuildDate><item><title><![CDATA[Docker 시작하기]]></title><link>https://jeongjaeeom.github.io/docker/</link><guid isPermaLink="false">https://jeongjaeeom.github.io/docker/</guid><pubDate>Mon, 13 Jun 2022 00:00:00 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[[Clean Code] 3장 함수]]></title><description><![CDATA[3장 함수 작게 만들어라! 함수를 만드는 첫째 규칙은'작게!'다. 함수를 만드는 둘째 규칙은 '더 작게!'다 함수에서 들여쓰기 수준은 1단이나…]]></description><link>https://jeongjaeeom.github.io/clean-code/</link><guid isPermaLink="false">https://jeongjaeeom.github.io/clean-code/</guid><pubDate>Mon, 13 Jun 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;3장 함수&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed of devdog.blog]]></title><description><![CDATA[Hello :) I'm DevDog]]></description><link>https://jeongjaeeom.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 21 Jun 2022 02:49:06 GMT</lastBuildDate><item><title><![CDATA[Docker 시작하기]]></title><description><![CDATA[29. Attached & Detached 컨테이너 이해하기 3…]]></description><link>https://jeongjaeeom.github.io/docker/</link><guid isPermaLink="false">https://jeongjaeeom.github.io/docker/</guid><pubDate>Mon, 13 Jun 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;29. Attached &amp;#x26; Detached 컨테이너 이해하기&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# detached mode default&lt;/span&gt;
+$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; start &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;컨테이너ID&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# attached mode default&lt;/span&gt;
+$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; run &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;이미지ID&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# 기본 연결 모드로 실행 로그 확인 가능&lt;/span&gt;
+$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; run -p &lt;span class=&quot;token number&quot;&gt;3000&lt;/span&gt;:80 7f21a3339122
+
+&lt;span class=&quot;token comment&quot;&gt;# 기본 비 연결 모드로 실행 로그 확인 안됨&lt;/span&gt;
+$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; start &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;컨테이너ID&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# 컨테이너에 기록된 로그 확인&lt;/span&gt;
+$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; logs musing_franklin
+
+&lt;span class=&quot;token comment&quot;&gt;# 컨테이너에 기록된 로그 실시간 확인&lt;/span&gt;
+$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; logs -f musing_franklin&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;32. 이미지 &amp;#x26; 컨테이너 삭제하기&lt;/h2&gt;
+&lt;hr&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;컨테이너 ID&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+
+$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; images
+
+&lt;span class=&quot;token comment&quot;&gt;# 이미지 제거&lt;/span&gt;
+$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; rmi &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;이미지 ID&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# 여러개 이미지 제거&lt;/span&gt;
+$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; rmi &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;이미지 ID&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;이미지 ID&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;이미지 ID&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;이미지가 더 이상 컨테이너에서 사용되지 않고  중지된 컨테이너에 포함된 경우에만&lt;/p&gt;
+&lt;p&gt;이미지를 제거할 수 있다는 겁니다.&lt;/p&gt;
+&lt;p&gt;중지된 컨테이너가 있는 경우 그 컨테이너에서 사용 중인 이미지를 제거할 수 없습니다.&lt;/p&gt;
+&lt;p&gt;먼저 그 컨테이너를 제거해야 합니다.&lt;/p&gt;
+&lt;p&gt;즉, 컨테이너가 시작되거나 중지되더라도 그 컨테이너에 속한 이미지는 제거할 수 없습니다.&lt;/p&gt;
+&lt;p&gt;우선적으로 컨테이너를 제거해야 합니다.&lt;/p&gt;
+&lt;h2&gt;33. 중지된 컨테이너 자동 제거하기&lt;/h2&gt;
+&lt;hr&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; run -p &lt;span class=&quot;token number&quot;&gt;3000&lt;/span&gt;:80 -d -rm 2ddf2ede7d6c&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;34. 작동 배경 살펴보기: 이미지 검사&lt;/h2&gt;
+&lt;hr&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; image inspect &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;이미지 ID&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;35. 컨테이너에/컨테이너로 부터 파일 복사하기&lt;/h2&gt;
+&lt;h2&gt;Reference&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.udemycom/course/docker-kubernetes-the-practical-guide/&quot;&gt;Docker &amp;#x26; Kubernetes: The Practical Guide [2022 Edition]&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[[Clean Code] 3장 함수]]></title><description><![CDATA[3장 함수 작게 만들어라! 함수를 만드는 첫째 규칙은'작게!'다. 함수를 만드는 둘째 규칙은 '더 작게!'다 함수에서 들여쓰기 수준은 1단이나…]]></description><link>https://jeongjaeeom.github.io/clean-code/</link><guid isPermaLink="false">https://jeongjaeeom.github.io/clean-code/</guid><pubDate>Mon, 13 Jun 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;3장 함수&lt;/h1&gt;
 &lt;h2&gt;작게 만들어라!&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;함수를 만드는 첫째 규칙은&apos;작게!&apos;다. 함수를 만드는 둘째 규칙은 &apos;더 작게!&apos;다&lt;/li&gt;
@@ -70,6 +115,10 @@
 &lt;li&gt;대가 프로그래머는 시스템을 (구현할) 프로그램이 아니라 (풀어갈) 이야기로 여긴다. 프로그래밍 언어라는 수단을 사용해 좀 더 풍부하고 좀 더 표현력이 강한 언어를 만들어
 이야기를 풀어간다.&lt;/li&gt;
 &lt;li&gt;함수 계층이 바로 그 언어에 속한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Reference&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.yes24.com/Product/Goods/11681152&quot;&gt;Clean Code&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content:encoded></item><item><title><![CDATA[🤩 4. Other Tips]]></title><description><![CDATA[How to change the favicon? The favicon is located in . If you replace that image, the favicon will change. If you want to change the name of…]]></description><link>https://jeongjaeeom.github.io/other-tips/</link><guid isPermaLink="false">https://jeongjaeeom.github.io/other-tips/</guid><pubDate>Tue, 04 May 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;How to change the favicon?&lt;/h2&gt;
 &lt;p&gt;The favicon is located in &lt;code class=&quot;language-text&quot;&gt;static/favicon.png&lt;/code&gt;. If you replace that image, the favicon will change.&lt;/p&gt;
 &lt;p&gt;If you want to change the name of the favicon, change the &lt;code class=&quot;language-text&quot;&gt;icon&lt;/code&gt; property of &lt;code class=&quot;language-text&quot;&gt;gatsby-plugin-manifest&lt;/code&gt; in &lt;code class=&quot;language-text&quot;&gt;gatsby-config.js&lt;/code&gt;.&lt;/p&gt;
