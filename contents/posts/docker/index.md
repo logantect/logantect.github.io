@@ -12,6 +12,7 @@ series: "Docker & Kubernetes 실전 가이드"
 ---
 
 ## 29. Attached & Detached 컨테이너 이해하기
+
 ```shell
 # detached mode default
 $ docker start [컨테이너ID]
