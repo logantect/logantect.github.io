@@ -1,17 +1,15 @@
 ---
-title: "AWS EC2 Pinpoint 설치 with docker"
+title: "Git 저장소 복제 하기"
 description:
-date: 2022.07.29
+date: 2022-07-29
 tags:
 - git
 - github
 - repository
 --- 
 
-# Git 저장소 미러링하기
+원격리포지터리를 옮기고 싶은 경우  `--mirror` 옵션을 사용하여 깃 커밋 히스토리 그대로 푸시하는 방법을 알아보자.  
 
-Date: 2022.07.29  
-Tags: #git #github #repository
 
 ### 1. 기존 프로젝트 클론
 ```bash

@@ -1,7 +1,7 @@
 module.exports = {
-  title: "devdog.blog",
-  description: "Hello :) I'm DevDog",
-  author: "DevDog",
+  title: "jeongjae's.blog",
+  description: "Hello :) I'm jeongjae",
+  author: "jeongjae",
   siteUrl: "https://jeongjaeeom.github.io/",
   links: {
     github: "https://github.com/jeongjaeeom",
