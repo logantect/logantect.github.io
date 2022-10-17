@@ -1,4 +1,43 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed of jeongjae's.blog]]></title><description><![CDATA[Hello :) I'm jeongjae]]></description><link>https://jeongjaeeom.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 17 Oct 2022 07:15:08 GMT</lastBuildDate><item><title><![CDATA[우아한테크세미나 코프링 정리]]></title><description><![CDATA[우아한테크세미나 코프링 정리 코틀린이란? JVM…]]></description><link>https://jeongjaeeom.github.io/README/</link><guid isPermaLink="false">https://jeongjaeeom.github.io/README/</guid><pubDate>Mon, 17 Oct 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;우아한테크세미나 코프링 정리&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed of jeongjae's.blog]]></title><description><![CDATA[Hello :) I'm jeongjae]]></description><link>https://jeongjaeeom.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 17 Oct 2022 07:19:44 GMT</lastBuildDate><item><title><![CDATA[리눅스 서버 터미널 기본 설정]]></title><description><![CDATA[리눅스 서버 터미널 기본 설정 리눅스 서버 설치 후 기본적인 터미널 설정을 진행해봅니다.  환경에서 를 설치하여 진행하였습니다. 터미널 세션 타임아웃(Sessio Timeout) 설정 Sessio Timeout…]]></description><link>https://jeongjaeeom.github.io/README/</link><guid isPermaLink="false">https://jeongjaeeom.github.io/README/</guid><pubDate>Mon, 17 Oct 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;리눅스 서버 터미널 기본 설정&lt;/h1&gt;
+&lt;p&gt;리눅스 서버 설치 후 기본적인 터미널 설정을 진행해봅니다.&lt;br&gt;
+&lt;code class=&quot;language-text&quot;&gt;AWS EC2&lt;/code&gt; 환경에서 &lt;code class=&quot;language-text&quot;&gt;Amazon Linux 2&lt;/code&gt;를 설치하여 진행하였습니다.&lt;/p&gt;
+&lt;h2&gt;터미널 세션 타임아웃(Sessio Timeout) 설정&lt;/h2&gt;
+&lt;p&gt;Sessio Timeout을 설정 하여 일정 시간 작업을 하지 않을 경우 터미널 연결을 해제 하도록 설정할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;프로파일(.profile) 파일 생성 및 내용 입력&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;vi&lt;/span&gt; ~/.profile
+&lt;span class=&quot;token assign-left variable&quot;&gt;HISTTIMEFORMAT&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;%F %T -- &quot;&lt;/span&gt;
+&lt;span class=&quot;token builtin class-name&quot;&gt;export&lt;/span&gt; HISTTIMEFORMAT
+&lt;span class=&quot;token builtin class-name&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;TMOUT&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;600&lt;/span&gt; 
+
+$ &lt;span class=&quot;token builtin class-name&quot;&gt;source&lt;/span&gt; ~/.profile&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;HISTTIMEFORMAT&lt;/code&gt; - history 명령 결과에 시간 값을 추가한다.&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;TMOUT=600&lt;/code&gt; - 세션 타임아웃을 설정한다(초 단위).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;쉘(Shell) Prompt 변경하기&lt;/h2&gt;
+&lt;p&gt;Bastion 서버 등과 같이 서버를 구분해야하는 경우에 Shell Prompt를 설정하여 서버 관리자의 인적 장애를 예방할 수 있다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;vi&lt;/span&gt; ~/.bashrc
+&lt;span class=&quot;token assign-left variable&quot;&gt;USERNAME&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;BASTION
+&lt;span class=&quot;token assign-left variable&quot;&gt;&lt;span class=&quot;token environment constant&quot;&gt;PS1&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;[\e[1;31m$USERNAME\e[0m][\e[1;32m\t\e[0m][\e[1;33m\u\e[0m@\e[1;36m\h\e[0m \w] \n\$ \[\033[00m\]&apos;&lt;/span&gt;
+
+$ &lt;span class=&quot;token builtin class-name&quot;&gt;source&lt;/span&gt; ~/.bashrc&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Logger를 사용하여 감사로그 남기기&lt;/h2&gt;
+&lt;p&gt;서버에서 작업할 경우, 작업 이력 히스토리를 기록해 두어야 장애 발싱시 원인 분석을 할 수 있습니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;vi&lt;/span&gt; ~/.bashrc
+&lt;span class=&quot;token assign-left variable&quot;&gt;tty&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;tty&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;awk&lt;/span&gt; -F&lt;span class=&quot;token string&quot;&gt;&quot;/dev/&quot;&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;{print $2}&apos;&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;`&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token assign-left variable&quot;&gt;IP&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;`&lt;/span&gt;w &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token variable&quot;&gt;$tty&lt;/span&gt;&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;{print $3}&apos;&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;`&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token builtin class-name&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;PROMPT_COMMAND&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;logger -p local0.debug &quot;[USER]$(whoami) [IP]$IP [PID]$$ [PWD]`pwd` [COMMAND] $(history 1 | sed &quot;s/^[ ]*[0-9]\+[ ]*//&quot; )&quot;&apos;&lt;/span&gt;
+
+$ &lt;span class=&quot;token builtin class-name&quot;&gt;source&lt;/span&gt;  ~/.bashrc&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;vi&lt;/span&gt; /etc/rsyslog.d/50-default.conf
+local0.*  /var/log/command.log
+
+$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;service&lt;/span&gt; rsyslog restart
+$ &lt;span class=&quot;token function&quot;&gt;tail&lt;/span&gt; -f /var/log/command.log&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;참고&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://edu.nextstep.camp/c/VI4PhjPA/&quot;&gt;인프라 공방&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[우아한테크세미나 코프링 정리]]></title><description><![CDATA[우아한테크세미나 코프링 정리 코틀린이란? JVM…]]></description><link>https://jeongjaeeom.github.io/README/</link><guid isPermaLink="false">https://jeongjaeeom.github.io/README/</guid><pubDate>Mon, 17 Oct 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;우아한테크세미나 코프링 정리&lt;/h1&gt;
 &lt;h2&gt;코틀린이란?&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -206,48 +245,9 @@
 &lt;li&gt;1.5부터는 IR컴파일러 도입하여 더 성능이 좋다&lt;/li&gt;
 &lt;li&gt;인텔리제이 최신버전 그레이들 최신버전 코틀린 최신버전을 사용하면 3박자가 잘 맞아 재밌게 사용할 수 있다!&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;Reference&lt;/h2&gt;
+&lt;h2&gt;참고&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=ewBri47JWII&quot;&gt;[LIVE 다시보기] 어디 가서 코프링 매우 알은 체하기! : 9월 우아한테크세미나&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[리눅스 서버 터미널 기본 설정]]></title><description><![CDATA[리눅스 서버 터미널 기본 설정 리눅스 서버 설치 후 기본적인 터미널 설정을 진행해봅니다.  환경에서 를 설치하여 진행하였습니다. 환경변수 적용하기 Sessio Timeout…]]></description><link>https://jeongjaeeom.github.io/README/</link><guid isPermaLink="false">https://jeongjaeeom.github.io/README/</guid><pubDate>Mon, 17 Oct 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;리눅스 서버 터미널 기본 설정&lt;/h1&gt;
-&lt;p&gt;리눅스 서버 설치 후 기본적인 터미널 설정을 진행해봅니다.&lt;br&gt;
-&lt;code class=&quot;language-text&quot;&gt;AWS EC2&lt;/code&gt; 환경에서 &lt;code class=&quot;language-text&quot;&gt;Amazon Linux 2&lt;/code&gt;를 설치하여 진행하였습니다.&lt;/p&gt;
-&lt;h2&gt;환경변수 적용하기&lt;/h2&gt;
-&lt;p&gt;Sessio Timeout을 설정 하여 일정 시간 작업을 하지 않을 경우 터미널 연결을 해제 하도록 설정할 수 있습니다.&lt;/p&gt;
-&lt;p&gt;프로파일(.profile) 파일 생성 및 내용 입력&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;vi&lt;/span&gt; ~/.profile
-&lt;span class=&quot;token assign-left variable&quot;&gt;HISTTIMEFORMAT&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;%F %T -- &quot;&lt;/span&gt;
-&lt;span class=&quot;token builtin class-name&quot;&gt;export&lt;/span&gt; HISTTIMEFORMAT
-&lt;span class=&quot;token builtin class-name&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;TMOUT&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;600&lt;/span&gt; 
-
-$ &lt;span class=&quot;token builtin class-name&quot;&gt;source&lt;/span&gt; ~/.profile&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;HISTTIMEFORMAT&lt;/code&gt; - history 명령 결과에 시간 값을 추가한다.&lt;/li&gt;
-&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;TMOUT=600&lt;/code&gt; - 세션 타임아웃을 설정한다(초 단위).&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;쉘(Shell) Prompt 변경하기&lt;/h2&gt;
-&lt;p&gt;Bastion 서버 등과 같이 서버를 구분해야하는 경우에 Shell Prompt를 설정하여 서버 관리자의 인적 장애를 예방할 수 있다.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;vi&lt;/span&gt; ~/.bashrc
-&lt;span class=&quot;token assign-left variable&quot;&gt;USERNAME&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;BASTION
-&lt;span class=&quot;token assign-left variable&quot;&gt;&lt;span class=&quot;token environment constant&quot;&gt;PS1&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;[\e[1;31m$USERNAME\e[0m][\e[1;32m\t\e[0m][\e[1;33m\u\e[0m@\e[1;36m\h\e[0m \w] \n\$ \[\033[00m\]&apos;&lt;/span&gt;
-
-$ &lt;span class=&quot;token builtin class-name&quot;&gt;source&lt;/span&gt; ~/.bashrc&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;Logger를 사용하여 감사로그 남기기&lt;/h2&gt;
-&lt;p&gt;서버에서 작업할 경우, 작업 이력 히스토리를 기록해 두어야 장애 발싱시 원인 분석을 할 수 있습니다.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;vi&lt;/span&gt; ~/.bashrc
-&lt;span class=&quot;token assign-left variable&quot;&gt;tty&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;tty&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;awk&lt;/span&gt; -F&lt;span class=&quot;token string&quot;&gt;&quot;/dev/&quot;&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;{print $2}&apos;&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;`&lt;/span&gt;&lt;/span&gt;
-&lt;span class=&quot;token assign-left variable&quot;&gt;IP&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;`&lt;/span&gt;w &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token variable&quot;&gt;$tty&lt;/span&gt;&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;{print $3}&apos;&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;`&lt;/span&gt;&lt;/span&gt;
-&lt;span class=&quot;token builtin class-name&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;PROMPT_COMMAND&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;logger -p local0.debug &quot;[USER]$(whoami) [IP]$IP [PID]$$ [PWD]`pwd` [COMMAND] $(history 1 | sed &quot;s/^[ ]*[0-9]\+[ ]*//&quot; )&quot;&apos;&lt;/span&gt;
-
-$ &lt;span class=&quot;token builtin class-name&quot;&gt;source&lt;/span&gt;  ~/.bashrc&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;vi&lt;/span&gt; /etc/rsyslog.d/50-default.conf
-local0.*  /var/log/command.log
-
-$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;service&lt;/span&gt; rsyslog restart
-$ &lt;span class=&quot;token function&quot;&gt;tail&lt;/span&gt; -f /var/log/command.log&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;Reference&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://edu.nextstep.camp/c/VI4PhjPA/&quot;&gt;인프라 공방&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Git 저장소 복제 하기]]></title><description><![CDATA[원격리포지터리를 옮기고 싶은 경우   옵션을 사용하여 깃 커밋 히스토리 그대로 푸시하는 방법을 알아보자.   1. 기존 프로젝트 클론 2. 신규 프로젝트  옵션으로 푸시 3. 기존 프로젝트 삭제 Reference Duplicating a…]]></description><link>https://jeongjaeeom.github.io/git-mirror/</link><guid isPermaLink="false">https://jeongjaeeom.github.io/git-mirror/</guid><pubDate>Fri, 29 Jul 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;원격리포지터리를 옮기고 싶은 경우  &lt;code class=&quot;language-text&quot;&gt;--mirror&lt;/code&gt; 옵션을 사용하여 깃 커밋 히스토리 그대로 푸시하는 방법을 알아보자.  &lt;/p&gt;
 &lt;h3&gt;1. 기존 프로젝트 클론&lt;/h3&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; clone --bare https://github.com/exampleuser/old-repository.git&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
