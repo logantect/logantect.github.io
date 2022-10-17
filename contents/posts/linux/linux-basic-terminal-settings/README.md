@@ -10,11 +10,12 @@ tags:
 - aws
 ---
 
+
 # 리눅스 서버 터미널 기본 설정
 리눅스 서버 설치 후 기본적인 터미널 설정을 진행해봅니다.  
 `AWS EC2` 환경에서 `Amazon Linux 2`를 설치하여 진행하였습니다.
 
-## 환경변수 적용하기
+## 터미널 세션 타임아웃(Sessio Timeout) 설정
 Sessio Timeout을 설정 하여 일정 시간 작업을 하지 않을 경우 터미널 연결을 해제 하도록 설정할 수 있습니다.
 
 프로파일(.profile) 파일 생성 및 내용 입력
@@ -60,5 +61,5 @@ local0.*  /var/log/command.log
 $ sudo service rsyslog restart
 $ tail -f /var/log/command.log
 ```
-## Reference
+## 참고
 * [인프라 공방](https://edu.nextstep.camp/c/VI4PhjPA/)

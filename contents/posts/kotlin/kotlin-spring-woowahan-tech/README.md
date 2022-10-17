@@ -198,5 +198,5 @@ data class RecruitmentPeriod(
 * 1.5부터는 IR컴파일러 도입하여 더 성능이 좋다
 * 인텔리제이 최신버전 그레이들 최신버전 코틀린 최신버전을 사용하면 3박자가 잘 맞아 재밌게 사용할 수 있다!
 
-## Reference
+## 참고
 * [[LIVE 다시보기] 어디 가서 코프링 매우 알은 체하기! : 9월 우아한테크세미나](https://www.youtube.com/watch?v=ewBri47JWII)
