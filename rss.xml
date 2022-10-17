@@ -1,6 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed of jeongjae's.blog]]></title><description><![CDATA[Hello :) I'm jeongjae]]></description><link>https://jeongjaeeom.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 17 Oct 2022 07:23:11 GMT</lastBuildDate><item><title><![CDATA[리눅스 서버 터미널 기본 설정]]></title><description><![CDATA[리눅스 서버 터미널 기본 설정 리눅스 서버 설치 후 기본적인 터미널 설정을 진행해봅니다.  환경에서 를 설치하여 진행하였습니다. 터미널 세션 타임아웃(Sessio Timeout) 설정 Sessio Timeout…]]></description><link>https://jeongjaeeom.github.io/linux-basic-terminal-settings/</link><guid isPermaLink="false">https://jeongjaeeom.github.io/linux-basic-terminal-settings/</guid><pubDate>Mon, 17 Oct 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;리눅스 서버 터미널 기본 설정&lt;/h1&gt;
-&lt;p&gt;리눅스 서버 설치 후 기본적인 터미널 설정을 진행해봅니다.&lt;br&gt;
-&lt;code class=&quot;language-text&quot;&gt;AWS EC2&lt;/code&gt; 환경에서 &lt;code class=&quot;language-text&quot;&gt;Amazon Linux 2&lt;/code&gt;를 설치하여 진행하였습니다.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed of jeongjae's.blog]]></title><description><![CDATA[Hello :) I'm jeongjae]]></description><link>https://jeongjaeeom.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 17 Oct 2022 07:39:32 GMT</lastBuildDate><item><title><![CDATA[리눅스 서버 터미널 기본 설정]]></title><description><![CDATA[리눅스 서버 설치 후 기본적인 터미널 설정을 진행해봅니다.   인스턴스의  기준으로 작성되었습니다. 터미널 세션 타임아웃(Sessio Timeout) 설정 Sessio Timeout…]]></description><link>https://jeongjaeeom.github.io/linux-basic-terminal-settings/</link><guid isPermaLink="false">https://jeongjaeeom.github.io/linux-basic-terminal-settings/</guid><pubDate>Mon, 17 Oct 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;리눅스 서버 설치 후 기본적인 터미널 설정을 진행해봅니다.  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;AWS EC2&lt;/code&gt;인스턴스의 &lt;code class=&quot;language-text&quot;&gt;Amazon Linux 2&lt;/code&gt; 기준으로 작성되었습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2&gt;터미널 세션 타임아웃(Sessio Timeout) 설정&lt;/h2&gt;
 &lt;p&gt;Sessio Timeout을 설정 하여 일정 시간 작업을 하지 않을 경우 터미널 연결을 해제 하도록 설정할 수 있습니다.&lt;/p&gt;
 &lt;p&gt;프로파일(.profile) 파일 생성 및 내용 입력&lt;/p&gt;
@@ -37,7 +38,9 @@ $ &lt;span class=&quot;token function&quot;&gt;tail&lt;/span&gt; -f /var/log/com
 &lt;h2&gt;참고&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://edu.nextstep.camp/c/VI4PhjPA/&quot;&gt;인프라 공방&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[우아한테크세미나 코프링 정리]]></title><description><![CDATA[우아한테크세미나 코프링 정리 코틀린이란? JVM…]]></description><link>https://jeongjaeeom.github.io/kotlin-spring-woowahan-tech/</link><guid isPermaLink="false">https://jeongjaeeom.github.io/kotlin-spring-woowahan-tech/</guid><pubDate>Mon, 17 Oct 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;우아한테크세미나 코프링 정리&lt;/h1&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[우아한테크세미나 코프링 정리]]></title><description><![CDATA[우아한테크세미나 어디 가서 코프링 매우 알은 체하기!를 보고 정리한 내용입니다.    코틀린이란? JVM…]]></description><link>https://jeongjaeeom.github.io/kotlin-spring-woowahan-tech/</link><guid isPermaLink="false">https://jeongjaeeom.github.io/kotlin-spring-woowahan-tech/</guid><pubDate>Mon, 17 Oct 2022 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;우아한테크세미나 &lt;a href=&quot;https://www.youtube.com/watch?v=ewBri47JWII&quot;&gt;어디 가서 코프링 매우 알은 체하기!&lt;/a&gt;를 보고 정리한 내용입니다.   &lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2&gt;코틀린이란?&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
