@@ -2,6 +2,7 @@
 title: "리눅스 서버 터미널 기본 설정"
 description:
 date: 2022-10-17
+update: 2022-10-17
 tags:
 - linux
 - terminal
