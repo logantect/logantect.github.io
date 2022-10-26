@@ -1,4 +1,11 @@
-# [번역] JVM Internals
+---
+title: "[번역] JVM Internals"
+date: 2022-10-15 03:00:00
+tags:
+- java
+- JVM
+---
+
 이 기사에서는 JVM(Java Virtual Machine)의 내부 아키텍처에 대해 설명합니다. 다음 다이어그램은 Java Virtual Machine Specification Java SE 7 Edition을 준수하는 일반적인 JVM 주요 내부 구성 요소를 보여줍니다.
 
 ![JVM_Internal_Architecture_small](./images/JVM_Internal_Architecture_small.png)
