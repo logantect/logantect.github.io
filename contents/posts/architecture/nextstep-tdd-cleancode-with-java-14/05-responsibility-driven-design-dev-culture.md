@@ -1,8 +1,7 @@
 ---
 title: "5차 강의 - 책임주도 설계, 개발문화 만들기"
 description:
-date: 2022-06-01
-update: 2022-06-01
+date: 2022-06-01 22:00:00
 tags:
 - tdd
 - java

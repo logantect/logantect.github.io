@@ -1,8 +1,7 @@
 ---
 title: "3차 강의 - 클래스 분리 & immutable"
 description:
-date: 2022-05-04
-update: 2022-05-04
+date: 2022-05-04 22:00:00
 tags:
 - tdd
 - java

@@ -1,8 +1,7 @@
 ---
 title: "AWS EC2 Pinpoint 설치 with docker"
 description:
-date: 2022-06-15
-update: 2022-06-15
+date: 2022-06-15 14:00:00
 tags:
 - pinpoint
 - aws

@@ -1,8 +1,7 @@
 ---
 title: "[Clean Code] 3장 함수"
 description:
-date: 2022-06-13
-update: 2022-06-13
+date: 2022-06-13 13:00:00
 tags:
   - clean-code
   - Clean Code

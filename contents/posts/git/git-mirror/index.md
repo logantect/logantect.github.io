@@ -1,7 +1,7 @@
 ---
 title: "Git 저장소 복제 하기"
 description:
-date: 2022-07-29
+date: 2022-07-29 20:00:00
 tags:
 - git
 - github

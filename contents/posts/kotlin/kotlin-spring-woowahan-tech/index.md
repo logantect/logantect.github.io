@@ -1,8 +1,7 @@
 ---
 title: "우아한테크세미나 코프링 정리"
 description:
-date: 2022-10-17
-update: 2022-10-17
+date: 2022-10-18 20:00:00
 tags:
 - kotlin
 - spring
