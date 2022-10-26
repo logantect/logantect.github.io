@@ -7,6 +7,7 @@
 ---
 
 ## Spring
+* [Kotlin에서 JPA Entity 멤버변수 private set 사용 시 주의사항](contents/posts/spring-data/spring-data-jpa-entity-kotlin-private-setter/index.md)
 
 ## Java
 
