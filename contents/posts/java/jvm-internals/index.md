@@ -1,6 +1,6 @@
 ---
 title: "[번역] JVM Internals"
-date: 2022-10-15 03:00:00
+date: 2021-10-15 03:00:00
 tags:
 - java
 - JVM
