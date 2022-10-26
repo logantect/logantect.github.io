@@ -2,13 +2,15 @@
 
 ![Version](https://img.shields.io/badge/version-2022.9.22-green.svg)
 
-기억은 기록을 이길 수 없다
+### 기억은 기록을 이길 수 없다
+
+---
 
 ## Spring
 
 ## Java
 
-* [JVM Internals](java/jvm-internals.md)
+* [JVM Internals](contents/posts/java/jvm-internals/index.md)
 
 ## Kotlin
 
