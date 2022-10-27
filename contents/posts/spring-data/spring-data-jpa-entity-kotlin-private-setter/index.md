@@ -13,7 +13,7 @@ tags:
 
 아래 코드는 “Private setters are not allowed for open properties” 컴파일 오류가 발생한다.
 
-```java
+```kotlin
 @Entity
 class Product(
     @Id @Column(columnDefinition = "BINARY(16)") val id: UUID,
@@ -44,7 +44,7 @@ JPA를 사용하려면 allopen 플러그인을 사용해야하는데, allopen �
 JPA를 사용하면 기본생성자도 private으로 선언할 수 없는데 수정자도 마찬가지다
 private → protected 로 변경하면 컴파일 오류는 발생하지 않는다.
 
-```java
+```kotlin
 @Entity
 class Product(
     @Id @Column(columnDefinition = "BINARY(16)") val id: UUID,
