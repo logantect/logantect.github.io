@@ -1,4 +1,326 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed of jeongjae's.blog]]></title><description><![CDATA[Hello :) I'm jeongjae]]></description><link>https://jeongjaeeom.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 27 Oct 2022 08:03:34 GMT</lastBuildDate><item><title><![CDATA[우아한테크세미나 코프링 정리]]></title><description><![CDATA[우아한테크세미나 어디 가서 코프링 매우 알은 체하기!를 보고 정리한 내용입니다.    코틀린이란? JVM…]]></description><link>https://jeongjaeeom.github.io/kotlin-spring-woowahan-tech/</link><guid isPermaLink="false">https://jeongjaeeom.github.io/kotlin-spring-woowahan-tech/</guid><pubDate>Tue, 18 Oct 2022 20:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed of jeongjae's.blog]]></title><description><![CDATA[Hello :) I'm jeongjae]]></description><link>https://jeongjaeeom.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 31 Oct 2022 08:24:02 GMT</lastBuildDate><item><title><![CDATA[k6로 부하테스트 시작하기]]></title><description><![CDATA[부하테스트 도구 중 하나인 k6로 부하테스트 시작해보자  k6 설치 는 k6에서 사용하는 PGP V4 서명을 지원하지 않기 때문에 설치시 비활성화 옵션을 추가하여 설치 k6 실행 k6는 JavaScript ES…]]></description><link>https://jeongjaeeom.github.io/k6/</link><guid isPermaLink="false">https://jeongjaeeom.github.io/k6/</guid><pubDate>Mon, 31 Oct 2022 20:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;부하테스트 도구 중 하나인 k6로 부하테스트 시작해보자 &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;k6 설치&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;Amazon Linux 2&lt;/code&gt;는 k6에서 사용하는 PGP V4 서명을 지원하지 않기 때문에 설치시 비활성화 옵션을 추가하여 설치&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; yum &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; https://dl.k6.io/rpm/repo.rpm
+$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; yum &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; --nogpgcheck k6 -y&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;k6 실행&lt;/h2&gt;
+&lt;p&gt;k6는 JavaScript ES6 모듈로 작성할 수 있다.&lt;br&gt;
+다음 코드를 복사하여 script.js로 저장하자.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; http &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;k6/http&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; sleep &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;k6&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; options &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token literal-property property&quot;&gt;vus&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token literal-property property&quot;&gt;duration&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;30s&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  http&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;http://test.k6.io&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;다음 명령으로 k6를 실행할 수 있다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ k6 run script.js&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;실행결과&lt;/h2&gt;
+&lt;p&gt;&lt;figure class=&apos;gatsby-resp-image-figure&apos; style=&apos;margin-bottom: 16px;&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; &apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/af5129e1e2a5986a2187379d8ecd9b79/3cde6/k6-script-result.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 64.11764705882354%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAAB40lEQVQ4y41TWXIiMRTrw4Tppvd935cAAQKhau5/FI2eWYpUMZP5eCW37SdLslvzoxZB0iOIO6zdEoadw7Ay/Fon0M1U4X38P6XpbDacErqVwwpbmH4Ny28eZP9qfrWuWV5FgiuJFTQPXDvFj2peEnphg34+wk0nWq6w0iOsjPiK+h2vc8q+4G38ilSzmZvkFxULvHREkI3wkwF+JuMJQT6zJjgRM6Ybm7FINPpTzt8IHb+CG9SI2BSmA2JiJGQkFQx5iKBLEonBsFl/iUMO0LJyRipFopiNUkk+IqveEfEAmU9ENaMxnRxvzxHcrK+eItAst8AwHVF3O3hUIU/G4ELS7RF1B3hUKlZFoVyWx3gczslTE/viUCIS1UqhEPYkXLYXtP0ePrNyvBIN5/L5jHI4KPJ6PCJu96iI2XJRPTHnxUkzn2CTVBQrwm48kPAL7bBXKm0S1tMnkv6AlA3SWLQ7hTkxbHYo6406IC5mFCKk2twVlhiXE6b3M5r+AyGtmPxbGirJqUROj9sPdMsZ6fCJlphvf6v92XRC2XFtc4HLV/KwLIRVu1XPRw6QyqjG56a43sJmDB7LZobu7W/yxYlyIxn23zMU+S43i1X5FkI3GRWRXISgyTm5Rbm0Bz6Pb8/mDzMWo6y0ubuQAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;k6-실행결과&apos; title=&apos;k6-실행결과&apos; src=&apos;/static/af5129e1e2a5986a2187379d8ecd9b79/ca1dc/k6-script-result.png&apos; srcset=&apos;/static/af5129e1e2a5986a2187379d8ecd9b79/e7570/k6-script-result.png 170w,
+/static/af5129e1e2a5986a2187379d8ecd9b79/f46e7/k6-script-result.png 340w,
+/static/af5129e1e2a5986a2187379d8ecd9b79/ca1dc/k6-script-result.png 680w,
+/static/af5129e1e2a5986a2187379d8ecd9b79/02d09/k6-script-result.png 1020w,
+/static/af5129e1e2a5986a2187379d8ecd9b79/9d567/k6-script-result.png 1360w,
+/static/af5129e1e2a5986a2187379d8ecd9b79/3cde6/k6-script-result.png 2014w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&apos;gatsby-resp-image-figcaption&apos;&gt;k6-실행결과&lt;/figcaption&gt;
+  &lt;/figure&gt;  &lt;/p&gt;
+&lt;p&gt;총 290번 요청 되었다 &lt;code class=&quot;language-text&quot;&gt;sleep(1)&lt;/code&gt;이 주어졌기 때문이다. 즉, 초당 10명의 가상유저가 30초 동안 요청을 한 것으로 알 수 있다.&lt;/p&gt;
+&lt;p&gt;이번엔 Grafana와 InfluxDB를 사용하여 모니터링을 해보자.&lt;/p&gt;
+&lt;h2&gt;Grafana 설치 및 실행&lt;/h2&gt;
+&lt;h3&gt;Grafana YUM 저장소 추가&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; yum update -y
+$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;vim&lt;/span&gt; /etc/yum.repos.d/grafana.repo&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;아래 내용 추가&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;[grafana]
+name=grafana
+baseurl=https://packages.grafana.com/oss/rpm
+repo_gpgcheck=1
+enabled=1
+gpgcheck=1
+gpgkey=https://packages.grafana.com/gpg.key
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;YUM 리포지토리 확인&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; yum repolist&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/9b6347645ed78cb6865b2c66cf253dfd/2fa46/grafana-yum-list.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 23.52941176470588%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAABYlAAAWJQFJUiTwAAAA/ElEQVQY001Q2W6DMBDkX5qSkHCEy+Z2AIPD1SitUvX/f2TqtYrUh9WO7Z2dGVvq/kTbr+jkhqpRiNIbWC4RsxZBVINrHCbCFL2FsQDLeoPPXoY3O8bhGOP9lOB4ZrDK4RPXbITLJDw+wo8auEEBx800IYcXlLj4uTmTgJq/MGgTWTkg4a0RJuyHlV6cwFLbD+ruA3J+oe4fkOqJsrmbAVKlsp3UDJPAtL4guhWVmEyvxYx+fKCoFbxrCWvZvo3SwY605RSnCzdEikOLKAYVYbonh6JdwAtpeOSa5b2Zd1wOa1q0s9ts/oWi7Y72Zf87xSbnJLp/g/NnYOf8AuijpCiPF9vUAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;grafana yum list&apos; title=&apos;grafana yum list&apos; src=&apos;/static/9b6347645ed78cb6865b2c66cf253dfd/ca1dc/grafana-yum-list.png&apos; srcset=&apos;/static/9b6347645ed78cb6865b2c66cf253dfd/e7570/grafana-yum-list.png 170w,
+/static/9b6347645ed78cb6865b2c66cf253dfd/f46e7/grafana-yum-list.png 340w,
+/static/9b6347645ed78cb6865b2c66cf253dfd/ca1dc/grafana-yum-list.png 680w,
+/static/9b6347645ed78cb6865b2c66cf253dfd/02d09/grafana-yum-list.png 1020w,
+/static/9b6347645ed78cb6865b2c66cf253dfd/9d567/grafana-yum-list.png 1360w,
+/static/9b6347645ed78cb6865b2c66cf253dfd/2fa46/grafana-yum-list.png 1526w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;Grafana 설치&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; yum &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; grafana&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Grafana 실행&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; systemctl start grafana-server&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Grafana 상태 확인&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; systemctl status grafana-server&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/f350351ef0441510406f393c7297c521/4abe3/grafana-status.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 13.529411764705882%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAnElEQVQI11WPWxKCMAxFWYwKPoBSWhBpi+U1MijsfzXXpvDDx53cZJKTJOjGFab/orYTWue7YUWlRnD5RiYaMG68J7G8QZIpFw0eaY3LVSK8FQcFdlygpx/MvIB8WfWQz3YHGMRsAxA8ZrUfiu6lh50jcdApFAjywkKZCUp/0NgZ5asH1QiSZNrHlG8XUZ5y7XPuFvgP9j7yws39AfOoYoyZ2c4qAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;grafana status&apos; title=&apos;grafana status&apos; src=&apos;/static/f350351ef0441510406f393c7297c521/ca1dc/grafana-status.png&apos; srcset=&apos;/static/f350351ef0441510406f393c7297c521/e7570/grafana-status.png 170w,
+/static/f350351ef0441510406f393c7297c521/f46e7/grafana-status.png 340w,
+/static/f350351ef0441510406f393c7297c521/ca1dc/grafana-status.png 680w,
+/static/f350351ef0441510406f393c7297c521/02d09/grafana-status.png 1020w,
+/static/f350351ef0441510406f393c7297c521/9d567/grafana-status.png 1360w,
+/static/f350351ef0441510406f393c7297c521/4abe3/grafana-status.png 2346w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;Grafana 접속&lt;/h3&gt;
+&lt;p&gt;Grafana는 3000번 포트를 사용합니다.
+초기 비밀번호 : admin / admin
+&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/2b9d9df48b00daf8cb9bb7040f323e37/9a1a0/grafana-main.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 76.47058823529412%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAABYlAAAWJQFJUiTwAAADZElEQVQ4y1XRyVMaaRjH8Z4kguzILrI1ILuiIiAIQtAY0IhLMC5REcUVI7gcZmqmKjVzmNuc5pRDKvOffucFrXLm8Knn6bd/z9PV3dK3tRbf10/4Z7PNj81zvm9c8K1+zd+rN/xVveXP5R5fF+/5pfLAQ/mR29IjVwsPtIVm4Z693B2NbI/6bI/adBfp18IpXxfO+KN8IVzxe7nD1/INv5W+8PPCLY/FLr1ij5tCj8v5Hm2hle9xmOuym+3SSN+ynvpCbeqGpckOUifdpJttcTfX5j53Llxyl7uim7umM9fhUjjLdjjJ3nAk6kGmw266w/Zsh82Za9amr6gmL1mauKAUP0f6PLHPUfKA1lSTk+kWJzNt4ZzjgSuaqWs+C3tieFdoiAUbU+fUk+esTJ6xnGhTiZ9SjJ6QixwjfQhtsR7ZZjO6y8fYPo34IY1EUzhmKbJOMVyjEl4ZyIVq4rpONd7iXeyYSrRJKXLEfPiQbOiAVHAfqSKvshSosxzc4P34FtXQNrXwDivhPZLyHE5ngk/pGDvZ2KCP+TKUQ/ssjO+TD+6RDe4yG9hhyt8g4dtCyrmWmHcvU/BUKXpXWPB9oCTXKfs3iHkyJCJ5ytkSi7kSE9F5wuIsK38kLcz4Nkl6N0h41oi6Vwm5qkhJe4FpR4nUaJlZZ4X02KLwjrRrmYhnhqAvwqhVxmGRGbN7kZ2TTLprJMRw1PWesMgGnYv4R9/iE3ukkDlNxJIhap0jZssTt80TtxdFLRDyZQnE3+IOzOEJ5hkL5PC6U4yL+wH7ArLIeEXebc3hsojPY84guQ0JvMZJfCNTyCPT+E0z+M2zg+r1pAnMfGI8tUM4c0Akd4pHzuMSuTGRGRUZh+gdYtZmTGI1TCDZNAHsmnEc2hAOnXg9XZRRvfgB+jgOYxi7wY/tmdUgYzWGRI1jMcSw6KOY9RFMurAQwqgNIumVTgzDLowqNyMqj+BlRO0TZExqPyPigX3GPm0Ag8aPQSuL6hvQa7zo1B7BjVblQlINmVANmVEpLKgVVtRKm2B/Mtzn+B/Ns5czOyoxM6y0Mix2SK9+UvNEw+tXfVpBx5vX+oGhN4ZnRhT/8XKuf87qBrPS0JCKF+oBhUKDTmdCqzWh69OZB71ebxn0/apU6lAqtIPsE/Vgx79KTdPQ7Jl3ugAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;grafana main&apos; title=&apos;grafana main&apos; src=&apos;/static/2b9d9df48b00daf8cb9bb7040f323e37/ca1dc/grafana-main.png&apos; srcset=&apos;/static/2b9d9df48b00daf8cb9bb7040f323e37/e7570/grafana-main.png 170w,
+/static/2b9d9df48b00daf8cb9bb7040f323e37/f46e7/grafana-main.png 340w,
+/static/2b9d9df48b00daf8cb9bb7040f323e37/ca1dc/grafana-main.png 680w,
+/static/2b9d9df48b00daf8cb9bb7040f323e37/02d09/grafana-main.png 1020w,
+/static/2b9d9df48b00daf8cb9bb7040f323e37/9d567/grafana-main.png 1360w,
+/static/2b9d9df48b00daf8cb9bb7040f323e37/9a1a0/grafana-main.png 3410w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;InfluxDB 설치 및 실행&lt;/h2&gt;
+&lt;h3&gt;YUM 저장소 추가&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;EOF &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;tee&lt;/span&gt; /etc/yum.repos.d/influxdb.repo&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;아래 내용 추가&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;[influxdb]
+name = InfluxDB Repository - RHEL 7
+baseurl = https://repos.influxdata.com/rhel/7/x86_64/stable
+enabled = 1
+gpgcheck = 1
+gpgkey = https://repos.influxdata.com/influxdb.key
+EOF&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;YUM 리포지토리 확인&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; yum repolist&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/9b6347645ed78cb6865b2c66cf253dfd/2fa46/grafana-yum-list.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 23.52941176470588%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAABYlAAAWJQFJUiTwAAAA/ElEQVQY001Q2W6DMBDkX5qSkHCEy+Z2AIPD1SitUvX/f2TqtYrUh9WO7Z2dGVvq/kTbr+jkhqpRiNIbWC4RsxZBVINrHCbCFL2FsQDLeoPPXoY3O8bhGOP9lOB4ZrDK4RPXbITLJDw+wo8auEEBx800IYcXlLj4uTmTgJq/MGgTWTkg4a0RJuyHlV6cwFLbD+ruA3J+oe4fkOqJsrmbAVKlsp3UDJPAtL4guhWVmEyvxYx+fKCoFbxrCWvZvo3SwY605RSnCzdEikOLKAYVYbonh6JdwAtpeOSa5b2Zd1wOa1q0s9ts/oWi7Y72Zf87xSbnJLp/g/NnYOf8AuijpCiPF9vUAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;grafana yum list&apos; title=&apos;grafana yum list&apos; src=&apos;/static/9b6347645ed78cb6865b2c66cf253dfd/ca1dc/grafana-yum-list.png&apos; srcset=&apos;/static/9b6347645ed78cb6865b2c66cf253dfd/e7570/grafana-yum-list.png 170w,
+/static/9b6347645ed78cb6865b2c66cf253dfd/f46e7/grafana-yum-list.png 340w,
+/static/9b6347645ed78cb6865b2c66cf253dfd/ca1dc/grafana-yum-list.png 680w,
+/static/9b6347645ed78cb6865b2c66cf253dfd/02d09/grafana-yum-list.png 1020w,
+/static/9b6347645ed78cb6865b2c66cf253dfd/9d567/grafana-yum-list.png 1360w,
+/static/9b6347645ed78cb6865b2c66cf253dfd/2fa46/grafana-yum-list.png 1526w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;InfluxDB 설치&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; yum &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; influxdb -y&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;InfluxDB 실행&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; systemctl start influxdb&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;InfluxDB 상태 확인&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; systemctl status influxdb&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/4c12ce49e5165d775bd88b7db50648cc/6c5d7/influxdb-status.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 18.823529411764707%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAwklEQVQY00WPWQ6CQBBEOYyKoqyOsg+bgiJIjEbvf5Kyuw3x46VmKr1UG/V5QtEMiPNOtKgHqGMFFdbCISJI9+TJO2rEt+wYWyfGanPAcq1ETesI49Q9oPsR+XWAHu/o+if68Y1h+uB6e6GkBUxe9rKM0fQOVClLeCiz2YUy1OCC6jSibH5NcwpO5asCbpATGt6eIN25iXj8t71Majix7aW/gWwkdG6qL6Jx1iJKWyly/IySFNLEyk183sx87sL8n/wFvIaFutY7dhcAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;influxdb status&apos; title=&apos;influxdb status&apos; src=&apos;/static/4c12ce49e5165d775bd88b7db50648cc/ca1dc/influxdb-status.png&apos; srcset=&apos;/static/4c12ce49e5165d775bd88b7db50648cc/e7570/influxdb-status.png 170w,
+/static/4c12ce49e5165d775bd88b7db50648cc/f46e7/influxdb-status.png 340w,
+/static/4c12ce49e5165d775bd88b7db50648cc/ca1dc/influxdb-status.png 680w,
+/static/4c12ce49e5165d775bd88b7db50648cc/02d09/influxdb-status.png 1020w,
+/static/4c12ce49e5165d775bd88b7db50648cc/9d567/influxdb-status.png 1360w,
+/static/4c12ce49e5165d775bd88b7db50648cc/6c5d7/influxdb-status.png 1890w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;InfluxDB를 지정하여 k6 스크립트 실행&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ k6 run --out &lt;span class=&quot;token assign-left variable&quot;&gt;influxdb&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;http://localhost:8086/myk6db script.js&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/af5129e1e2a5986a2187379d8ecd9b79/3cde6/k6-script-result.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 64.11764705882354%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAAB40lEQVQ4y41TWXIiMRTrw4Tppvd935cAAQKhau5/FI2eWYpUMZP5eCW37SdLslvzoxZB0iOIO6zdEoadw7Ay/Fon0M1U4X38P6XpbDacErqVwwpbmH4Ny28eZP9qfrWuWV5FgiuJFTQPXDvFj2peEnphg34+wk0nWq6w0iOsjPiK+h2vc8q+4G38ilSzmZvkFxULvHREkI3wkwF+JuMJQT6zJjgRM6Ybm7FINPpTzt8IHb+CG9SI2BSmA2JiJGQkFQx5iKBLEonBsFl/iUMO0LJyRipFopiNUkk+IqveEfEAmU9ENaMxnRxvzxHcrK+eItAst8AwHVF3O3hUIU/G4ELS7RF1B3hUKlZFoVyWx3gczslTE/viUCIS1UqhEPYkXLYXtP0ePrNyvBIN5/L5jHI4KPJ6PCJu96iI2XJRPTHnxUkzn2CTVBQrwm48kPAL7bBXKm0S1tMnkv6AlA3SWLQ7hTkxbHYo6406IC5mFCKk2twVlhiXE6b3M5r+AyGtmPxbGirJqUROj9sPdMsZ6fCJlphvf6v92XRC2XFtc4HLV/KwLIRVu1XPRw6QyqjG56a43sJmDB7LZobu7W/yxYlyIxn23zMU+S43i1X5FkI3GRWRXISgyTm5Rbm0Bz6Pb8/mDzMWo6y0ubuQAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;k6 script result&apos; title=&apos;k6 script result&apos; src=&apos;/static/af5129e1e2a5986a2187379d8ecd9b79/ca1dc/k6-script-result.png&apos; srcset=&apos;/static/af5129e1e2a5986a2187379d8ecd9b79/e7570/k6-script-result.png 170w,
+/static/af5129e1e2a5986a2187379d8ecd9b79/f46e7/k6-script-result.png 340w,
+/static/af5129e1e2a5986a2187379d8ecd9b79/ca1dc/k6-script-result.png 680w,
+/static/af5129e1e2a5986a2187379d8ecd9b79/02d09/k6-script-result.png 1020w,
+/static/af5129e1e2a5986a2187379d8ecd9b79/9d567/k6-script-result.png 1360w,
+/static/af5129e1e2a5986a2187379d8ecd9b79/3cde6/k6-script-result.png 2014w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;Grafana 설정&lt;/h2&gt;
+&lt;h3&gt;Data Source 추가&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;Configuration&lt;/code&gt; &gt; &lt;code class=&quot;language-text&quot;&gt;Data sources&lt;/code&gt; 메뉴에서 &lt;code class=&quot;language-text&quot;&gt;Add data source&lt;/code&gt; 클릭하여 추가합니다.&lt;br&gt;
+아래 쪽에 &lt;code class=&quot;language-text&quot;&gt;Database&lt;/code&gt; 항목에 위에서 실행했던 &lt;code class=&quot;language-text&quot;&gt;myk6db&lt;/code&gt;입력 후 &lt;code class=&quot;language-text&quot;&gt;Save &amp;amp; test&lt;/code&gt; 클릭.
+&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/cb98dc5316d2059131b03d50168d3977/d621b/datasource.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 118.23529411764706%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAYCAYAAAD6S912AAAACXBIWXMAAAsTAAALEwEAmpwYAAACnElEQVQ4y5WVOXLbQBBFcQQtxL4QO0BsXEXRrrIcOHGgcuDMiRMfwZlP4Bv5eN+/G6IkWhYpBq8GQM18dE//njGSJIOVLFDVczIgzWYIoxyXVzaurp2zMdwgQRCWiKc5TMvH9cRVRFC4uDSV/fspDC9M0LQVukUHywth2j5MJ4ClhPDClOSw3PAotoycb/hcEKUV0rKBx2jlo+1GOsnxIkxlC9IGjh+R6VFszjdkYSyC+YwCUxV8GUHAyeOC11BBBmJIqGFc6Ms+VR3dMdLnfz8W2UGE5WxAVnaIkgpJViMvW03ftEfh/eTXRA8FGU1R92RQwSguaZtMU59YnkZ8lqCkJVGJfRw/hkuipEBAG4kDTqX7QlBs0s+3mK92mKY1YkbZDhvkVc9i1RAXnCUoKcnitt8gpkUCSZdVFU8eVPCcouRVh2G5ZZqZCp3y20kfFkWJYb7WPVS7HPHbMWStYdku2k8/0e6+Ik1zdk2tvnyd8h/G71FSapsapmni9scf7L78wma1xPrmA+ZMf768VYbFltxgsbpl8W5QtyvMOmGNGZ8LnlJp0WodxHKM0EF//xvN+2+MMKXBe9I+0B2Q5A2dUP2XmNbzWVBDDJzzYEjYyxK6Q19eTZzHY+ysPZVelr5t+rWmEangFNemp/0snPLgiyqrIPeiH7YqaLF/RfB5u709wnBMOWgqBLROEGaKxytA9sMNYm3JN/HQpoYjgp+XyN6RgpVqO/qyQFE142FBO7wFKYy0qRHxENADdtZhkw24j3aY3X1H0t4xBR8OozxrD8Mw0g7x2XZFkGPl0hrtR3hxz+PL1TNR7xklePYeYMJxj3yb8JIz8qLS286WCY6PC8eDS2/6vEMCpvBEomMYjc8hn8VismWO+8RfEs6H/ygmELAAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;datasource&apos; title=&apos;datasource&apos; src=&apos;/static/cb98dc5316d2059131b03d50168d3977/ca1dc/datasource.png&apos; srcset=&apos;/static/cb98dc5316d2059131b03d50168d3977/e7570/datasource.png 170w,
+/static/cb98dc5316d2059131b03d50168d3977/f46e7/datasource.png 340w,
+/static/cb98dc5316d2059131b03d50168d3977/ca1dc/datasource.png 680w,
+/static/cb98dc5316d2059131b03d50168d3977/02d09/datasource.png 1020w,
+/static/cb98dc5316d2059131b03d50168d3977/9d567/datasource.png 1360w,
+/static/cb98dc5316d2059131b03d50168d3977/d621b/datasource.png 1439w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;대시보드 설정&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;Dashboards&lt;/code&gt; &gt; &lt;code class=&quot;language-text&quot;&gt;Import&lt;/code&gt; &gt; &apos;Import via Grafana.com&apos; 항목에 2587을 입력
+&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/1a4f48a9b260ededb575fe311cb4bc60/79e31/add-dashboard.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 71.76470588235294%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAAsTAAALEwEAmpwYAAABkElEQVQ4y42Ty07CQBSG+wIK9DKXzvQKCLQVVBIvJGICC2N8ABcuNO7c+Ag+hgtf9vdMWxECFhZfOs3MfOef6ak16HURBCkupjPkxRSXV3OcnV9DyAiu56PV9tDusIOxZNiDyxSkDOB5EozGQgTgNbYjShxXls+9wmyUw6ONKhoi6hbQcYYwGcHjCjrsQqoYwg8RRD34OoFDqU0Al2nC38LKRwW4SjB5/MTi5QuL129k8zcw4UMYmYpKuAqrsY5pToBxvppbx9JU2SRIT06JMcI0A6P7Y5SayZq1scd9RNkdkvE9uNRUiIrR/l8sFaY0EaA/KBDFffi0wBzX43oLI3ZchuHsGZPlO72r7YS8rhwlA3T7OUziajNJdlBKbYewq6uok/0J6cUs6tgcxy33wDbh9HFUs9C0hZEegpE61GLNQqrYrhc3YldPE6BR2Do+ItroUPPuTVke2f9faC67WH4gnTzQ38JoAS2UYQPBSrIu2xCObp6Q5LeUVm40dBO7pKsju65D7SJK2XqjNrEr4Q/90G7iDCK0BwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;add dashboard&apos; title=&apos;add dashboard&apos; src=&apos;/static/1a4f48a9b260ededb575fe311cb4bc60/ca1dc/add-dashboard.png&apos; srcset=&apos;/static/1a4f48a9b260ededb575fe311cb4bc60/e7570/add-dashboard.png 170w,
+/static/1a4f48a9b260ededb575fe311cb4bc60/f46e7/add-dashboard.png 340w,
+/static/1a4f48a9b260ededb575fe311cb4bc60/ca1dc/add-dashboard.png 680w,
+/static/1a4f48a9b260ededb575fe311cb4bc60/79e31/add-dashboard.png 951w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&apos;Select a InfluxDB Data source&apos; 항목에 위에서 만들어 둔 InfluxDB 데이터 소스 추가
+&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/1ade3779d51db089f59527002604456f/3e3fe/dashboard-influxdb.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 69.41176470588235%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB8klEQVQ4y3WTW27bMBBFtYIiSK23SD1JvV92XCsJUrQ/RX+KbqPoGrqc7vN2hrHTyIk+DkjZ5OXM3BkrTjV03UNVHap2ov1gvlM9QKoZIh8QSAU3EIQ883q/xkqyEk23R93NRrBsRqiyM4KxnhGrEWGs4YUx/CgxhDInstVvFyyZKozzCblu4dDLfMgcNEg6FCMQCZGZC3x+PtxjoDtJXhrhQKQvWFGco+n3EElhQr4IMu6FVymxaExZpUWNgjLxrv63VNVj3C/mJduPVoJb8EXOxvHFmyAsfilXDSKqC0fLB2w3guNFsN/BOeP6chXdiyCbUtajEdUUbRClJBg+C7pbhCa6i+AqQq7JR9vHhxsbN7cObnee+V6x4zXAzmFCw6ZgRpGxyxPVUVcDmaOo6Nq4KalHuU85Cy7JtYBLXeAF6/pa3MjLwxccT59xOD5ivnsw4u1wQD8e0U/P1NSr3H9cip3LNdyIMCJ3c90gI3M42oL6kaNjg7iVzHreB9STdz/+4Puvv2i//obtuCSSrE2J8xa+rOAJRWja01RENGpRcUb9X8MConxENnyD0IsZweuWspKiRzccMU4nYkFVT0izGjKh+iXlGwRlJGhyBI2jG6ZUw+uUC6rV8hPT4YnM+WQMEHFBgmoDNopGjkbxPaf/AcHWgMU2G2t5AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;dashboard influxdb&apos; title=&apos;dashboard influxdb&apos; src=&apos;/static/1ade3779d51db089f59527002604456f/ca1dc/dashboard-influxdb.png&apos; srcset=&apos;/static/1ade3779d51db089f59527002604456f/e7570/dashboard-influxdb.png 170w,
+/static/1ade3779d51db089f59527002604456f/f46e7/dashboard-influxdb.png 340w,
+/static/1ade3779d51db089f59527002604456f/ca1dc/dashboard-influxdb.png 680w,
+/static/1ade3779d51db089f59527002604456f/3e3fe/dashboard-influxdb.png 860w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;이렇게 k6를 활용하여 부하테스트 진행 및 모니터링을 진행하는 방법을 알아보았다.&lt;br&gt;
+다음 포스팅에는 k6에서 제공하는 스크립트를 활용한 여러가지 부하테스트를 알아보도록 하자. &lt;/p&gt;
+&lt;h2&gt;참고&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://k6.io/docs/getting-started/installation&quot;&gt;https://k6.io/docs/getting-started/installation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://k6.io/docs/getting-started/running-k6&quot;&gt;https://k6.io/docs/getting-started/running-k6&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://k6.io/docs/getting-started/results-output&quot;&gt;https://k6.io/docs/getting-started/results-output&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.radishlogic.com/aws/ec2/how-to-install-grafana-on-ec2-amazon-linux-2&quot;&gt;https://www.radishlogic.com/aws/ec2/how-to-install-grafana-on-ec2-amazon-linux-2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://techviewleo.com/how-to-install-influxdb-on-amazon-linux&quot;&gt;https://techviewleo.com/how-to-install-influxdb-on-amazon-linux&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Kotlin에서 JPA Entity 멤버변수 private set 사용 시 주의사항]]></title><description><![CDATA[문제상황 아래 코드는 “Private setters are not allowed for open properties” 컴파일 오류가 발생한다. 원인 JPA를 사용하려면 allopen 플러그인을 사용해야하는데, allopen…]]></description><link>https://jeongjaeeom.github.io/spring-data-jpa-entity-kotlin-private-setter/</link><guid isPermaLink="false">https://jeongjaeeom.github.io/spring-data-jpa-entity-kotlin-private-setter/</guid><pubDate>Wed, 26 Oct 2022 17:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;문제상황&lt;/h2&gt;
+&lt;p&gt;아래 코드는 “Private setters are not allowed for open properties” 컴파일 오류가 발생한다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;kotlin&quot;&gt;&lt;pre class=&quot;language-kotlin&quot;&gt;&lt;code class=&quot;language-kotlin&quot;&gt;&lt;span class=&quot;token annotation builtin&quot;&gt;@Entity&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;token annotation builtin&quot;&gt;@Id&lt;/span&gt; &lt;span class=&quot;token annotation builtin&quot;&gt;@Column&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;columnDefinition &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string-literal singleline&quot;&gt;&lt;span class=&quot;token string&quot;&gt;&quot;BINARY(16)&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;val&lt;/span&gt; id&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; UUID&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token annotation builtin&quot;&gt;@Embedded&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;val&lt;/span&gt; name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; DisplayedName&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    price&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; Price &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; Price&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;ZERO
+&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token annotation builtin&quot;&gt;@Embedded&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; price&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; Price &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; price
+        &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;set&lt;/span&gt;  &lt;span class=&quot;token comment&quot;&gt;// private 컴파일오류!&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;constructor&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; DisplayedName&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; price&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; Long&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;IdGenerator&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;createId&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; name&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;Price&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;price&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;changePrice&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;price&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; Price&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;price &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; price
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;원인&lt;/h2&gt;
+&lt;p&gt;JPA를 사용하려면 allopen 플러그인을 사용해야하는데, allopen 플러그인으로 인해 모든 속성 및 메서드가 스프링 구성 요소에서 오픈된다.&lt;br&gt;
+그래서 오픈된 속성은 private setter를 만들 수 없다.&lt;/p&gt;
+&lt;h2&gt;해결책&lt;/h2&gt;
+&lt;p&gt;JPA를 사용하면 기본생성자도 private으로 선언할 수 없는데 수정자도 마찬가지다
+private → protected 로 변경하면 컴파일 오류는 발생하지 않는다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;kotlin&quot;&gt;&lt;pre class=&quot;language-kotlin&quot;&gt;&lt;code class=&quot;language-kotlin&quot;&gt;&lt;span class=&quot;token annotation builtin&quot;&gt;@Entity&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;token annotation builtin&quot;&gt;@Id&lt;/span&gt; &lt;span class=&quot;token annotation builtin&quot;&gt;@Column&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;columnDefinition &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string-literal singleline&quot;&gt;&lt;span class=&quot;token string&quot;&gt;&quot;BINARY(16)&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;val&lt;/span&gt; id&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; UUID&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token annotation builtin&quot;&gt;@Embedded&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;val&lt;/span&gt; name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; DisplayedName&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    price&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; Price &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; Price&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;ZERO
+&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token annotation builtin&quot;&gt;@Embedded&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; price&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; Price &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; price
+        &lt;span class=&quot;token keyword&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;set&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;constructor&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; DisplayedName&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; price&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; Long&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;IdGenerator&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;createId&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; name&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;Price&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;price&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;changePrice&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;price&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; Price&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;price &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; price
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;참고&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/45153998/what-is-an-open-property-why-i-cant-make-its-setter-to-private&quot;&gt;https://stackoverflow.com/questions/45153998/what-is-an-open-property-why-i-cant-make-its-setter-to-private&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[혼자 공부하는 컴퓨터구조+운영체제(1-2) - 컴퓨터 구조의 큰 그림]]></title><description><![CDATA[01-2. 컴퓨터 구조의 큰 그림 컴퓨터 구조 지식은 크게 두 가지입니다. 하나는 '컴퓨터가 이해하는 정보'이고 또 하나는 ‘컴퓨터의 네 가지 핵심 부품’입니다. 컴퓨터가 이해하는 정보 컴퓨터는 0과 1로 표현된 정보만을 이해합니다. 0과…]]></description><link>https://jeongjaeeom.github.io/1-2-big-picture-computer-system/</link><guid isPermaLink="false">https://jeongjaeeom.github.io/1-2-big-picture-computer-system/</guid><pubDate>Wed, 26 Oct 2022 04:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;01-2. 컴퓨터 구조의 큰 그림&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;컴퓨터 구조 지식은 크게 두 가지입니다. 하나는 &apos;&lt;strong&gt;컴퓨터가 이해하는 정보&lt;/strong&gt;&apos;이고 또 하나는 ‘&lt;strong&gt;컴퓨터의 네 가지 핵심 부품&lt;/strong&gt;’입니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;컴퓨터가 이해하는 정보&lt;/h2&gt;
+&lt;p&gt;컴퓨터는 0과 1로 표현된 정보만을 이해합니다. 0과 1로 표현되는 정보에는 크게 두 종류가 있는데, 바로 &lt;code class=&quot;language-text&quot;&gt;데이터&lt;/code&gt;와 &lt;code class=&quot;language-text&quot;&gt;명령어&lt;/code&gt;입니다.&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;데이터(Data)&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;데이터는 컴퓨터가 이해하는 숫자, 문자, 이미지, 동영상과 같은 정적인 정보입니다.
+컴퓨터와 주고받는 정보나 컴퓨터에 저장된 정보를 데이터라 통칭하기도 합니다.&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;명령어(Instruction)&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;명령어는 데이터를 움직이고 컴퓨터를 작동시키는 정보입니다. 데이터와 명령어 중 더 중요한 정보는 명령어입니다. 데이터는 명령어 없이는 아무것도 할 수 없는 정보 덩어리일 뿐이기 때문입니다.&lt;/p&gt;
+&lt;p&gt;즉, 명령어는 컴퓨터를 작동시키는 정보이고, 데이터는 명령어를 위해 존재하는 일종의 재료라고 할 수 있습니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&quot;&lt;strong&gt;컴퓨터는 도대체 뭘까&lt;/strong&gt;?&quot;라는 질문에 한 마디로 답해보자면 &lt;code class=&quot;language-text&quot;&gt;컴퓨터는 명령어를 처리하는 기계&lt;/code&gt;라고 할 수 있습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;컴퓨터의 4가지 핵심 부품&lt;/h2&gt;
+&lt;p&gt;컴퓨터를 이루고 있는 네 가지 핵심 부품은 &lt;code class=&quot;language-text&quot;&gt;중앙처리장치(CPU: Central Processing Unit)&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;주기억장치(Main Memory)&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;보조기억장치(Secondary Storage)&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;입출력장치(Input/Output Device)&lt;/code&gt;입니다.&lt;/p&gt;
+&lt;h2&gt;중앙처리장치(CPU)&lt;/h2&gt;
+&lt;p&gt;CPU는 컴퓨터의 두뇌입니다. CPU는 메모리에 저장된 명령어를 읽어 들이고, 읽어 들인 명령어를 해석하고, 실행하는 부품입니다. 즉, 컴퓨터에서 명령어를 읽고 연산을 수행하는 것은 CPU입니다.&lt;/p&gt;
+&lt;p&gt;CPU의 역할과 작동 원리를 구체적으로 이해하기 위해서는 CPU 내부 구성 요소 중 가장 &lt;code class=&quot;language-text&quot;&gt;중요한 산술논리연산장치(ALU: Arithmetic Logic Unit)&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;레지스터(Register)&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;제어장치(CU: Centrol Unit)&lt;/code&gt;에 대해 알아야 합니다.&lt;/p&gt;
+&lt;h3&gt;산술논리연산장치(ALU)&lt;/h3&gt;
+&lt;p&gt;ALU는 쉽게 말해 계산기로 계산만을 위해 존재하는 부품입니다. 컴퓨터 내부에서 수행되는 대부분의 계산을 수행합니다.&lt;/p&gt;
+&lt;h3&gt;레지스터(Register)&lt;/h3&gt;
+&lt;p&gt;레지스터는 CPU 내부의 작은 임시 저장 장치입니다. 프로그램을 실행하는 데 필요한 값들을 임시로 저장하며, CPU 내부에는 여러 개의 레지스터가 존재하고 각기 다른 이름과 역할을 가지고 있습니다.&lt;/p&gt;
+&lt;h3&gt;제어장치(CU)&lt;/h3&gt;
+&lt;p&gt;제어장치는 제어 신호(Control Signal)라는 전기 신호를 내보내고 명령어를 해석하는 장치입니다. 시스템 버스 중 제어 버스를 이용하여 메모리를 향해 &apos;메모리 읽기&apos;, &apos;메모리 쓰기&apos;와 같은 제어신호를 보내는 장치입니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&quot;&lt;strong&gt;누가 명령어를 읽고 연산을 수행하는가?&lt;/strong&gt;&quot;라는 질문에는 &lt;code class=&quot;language-text&quot;&gt;CPU&lt;/code&gt;라고 대답할 수 있습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;메모리&lt;/h2&gt;
+&lt;p&gt;메모리는 현재 실행되는 프로그램의 명령어와 데이터를 저장하는 부품입니다. 즉, 프로그램이 실행되려면 반드시 메모리에 저장되어 있어야 합니다.&lt;/p&gt;
+&lt;p&gt;메모리는 현실에서 우리가 주소로 원하는 위치를 찾아갈 수 있듯이 컴퓨터에서도 메모리에 저장된 값에 빠르고 효율적으로 접근하기 위해 주소라는 개념을 사용하여 메모리 내 원하는 위치에 접근할 수 있습니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;메모리는 보통 RAM(Random Access Memory)를 지칭합니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&quot;&lt;strong&gt;어디에서 명령어를 읽는가?&lt;/strong&gt;&quot;라는 질문에는 &lt;code class=&quot;language-text&quot;&gt;RAM&lt;/code&gt;이라고 대답할 수 있습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;보조기억장치&lt;/h2&gt;
+&lt;p&gt;앞서 메모리는 실행되는 프로그램의 명령어와 데이터를 저장한다고 했지만, 두 가지 치명적인 약점이 있습니다. 첫재는 가격이 비싸 저장 용량이 적다는 점이고, 둘째는 전원이 꺼지면 저장된 내용을 읽는다는 점입니다.&lt;/p&gt;
+&lt;p&gt;메모리보다 값이 저렴하며 저장용량이 크고 전원이 꺼져도 저장된 내용을 읽지 않으며, 메모리를 보조하는 저장 장치가 보조조기억장치입니다.&lt;/p&gt;
+&lt;p&gt;하드 디스크, SSD, USB 메모리 DVD, CD-ROM과 같은 저장 장치가 보조기억장치의 일종입니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;메모리가 현재 &apos;실행되는&apos; 프로그램을 저장한다면, 보조기억장치는 &apos;보관할&apos; 프로그램을 저장한다고 생각해도 좋습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;입출력장치&lt;/h2&gt;
+&lt;p&gt;입출력장치는 마이크, 스피커, 프린터, 마우스, 키보드 처럼 컴퓨터 외부에 연결되어 컴퓨터 내부와 정보를 교환하는 장치를 의미합니다.&lt;/p&gt;
+&lt;h2&gt;참고&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.yes24.com/Product/Goods/111378840&quot;&gt;http://www.yes24.com/Product/Goods/111378840&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://youtu.be/_uByLEwOt7Q&quot;&gt;https://youtu.be/_uByLEwOt7Q&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[혼자 공부하는 컴퓨터구조+운영체제(1-1) - 컴퓨터 구조를 알아야 하는 이유]]></title><description><![CDATA[…]]></description><link>https://jeongjaeeom.github.io/1-1-intro-computer-system/</link><guid isPermaLink="false">https://jeongjaeeom.github.io/1-1-intro-computer-system/</guid><pubDate>Wed, 26 Oct 2022 03:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;컴퓨터 구조는 실력 있는 개발자가 되면 반드시 알아야 할 기본 지식입니다.&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;문제 해결&lt;/h2&gt;
+&lt;p&gt;실무에서, 개발할 때는 문제 없이 작동했던 코드가 실제 사용자들에게 선보이는 자리에서는 작동하지 않는 상황이 비일비재 합니다. 이 경우는 분명 코드상의 문법적인 오류만이 원인이
+아니기 때문에 문제 해결의 실마리를 찾지 못 하면 발만 동동 구르는 상황이 되곤 합니다.&lt;/p&gt;
+&lt;p&gt;프로그래밍 언어의 문법만 알고 있는 사람에겐 컴퓨터란 코드를 입력하면 어찌어찌 알아서 결과물을 툭 내놓는 ‘미지의 대상’이기 때문입니다.&lt;/p&gt;
+&lt;p&gt;하지만, &lt;strong&gt;컴퓨터 구조&lt;/strong&gt;를 이해하고 있다면 문제 상황을 빠르게 진단할 수 있고, &lt;strong&gt;문제 해결&lt;/strong&gt;의 실마리를 다양하게 찾을 수 있습니다.
+컴퓨터 내부를 거리낌 없이 들여다보며 더 좋은 해결책을 고민하기 때문입니다. 이들에게는 컴퓨터란 ‘미지의 대상’이 아닌 &lt;strong&gt;‘분석의 대상’&lt;/strong&gt;이기 때문입니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;컴퓨터 구조 지식은 문법에 맞는 코드만 작성할 줄 아는 개발자를 넘어 다양한 문제를 스스로 해결할 줄 아는 개발자로 만들어줍니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;성능, 용량, 비용&lt;/h2&gt;
+&lt;p&gt;직접 만든 웹 사이트를 개발했다고 생각해 봅시다. 웹 사이트를 외부에 공개하기 위해서는 서버 컴퓨터가 필요합니다. 인터넷에서 ‘서버 컴퓨터’를 입력하면 비용도, 저장 용량도
+천차만별인 서버 컴퓨터가 검색됩니다.&lt;/p&gt;
+&lt;p&gt;이 중에서 어떤 컴퓨터를 고르실 건가요? 무조건 저렴한 게 좋을까요? 아니면 최신 제품이 최고 일까요? 클라우드 서비스를 이용하더라도 마찬가지 입니다. 어떤 CPU를 사용할지,
+어떤 메모리를 사용할지, 직접 판단하고 현명하게 선택해야 합니다.&lt;/p&gt;
+&lt;p&gt;어떤 선택을 하는지에 따라 &lt;strong&gt;성능, 용량, 비용&lt;/strong&gt;이 달라지기 때문입니다.&lt;/p&gt;
+&lt;p&gt;성능, 용량, 비용 문제는 프로그래밍 언어의 문법만 알아서는 해결하기 어렵습니다.
+그래서 컴퓨터 구조를 아는 것은 매우 중요합니다. 컴퓨터 구조에서 배우는 내용은 결국 성능, 용량, 비용과 직결되기 때문입니다.&lt;/p&gt;
+&lt;p&gt;즉, 컴퓨터 구조를 이해하면 입력과 출력에만 집중하는 개발을 넘어 성능, 용량, 비용까지 고려하며 개발하는 개발자가 될 수 있습니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;컴퓨터 구조&lt;/strong&gt;를 이해하면 문법만으로는 알기 어려운 성능, 용량, 비용을 고려하며 개발할 수 있습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;정리&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;컴퓨터 구조를 이해하면 &lt;strong&gt;문제 해결&lt;/strong&gt; 능력이 향상됩니다.&lt;/li&gt;
+&lt;li&gt;컴퓨터 구조를 이해하면 문법만으로 알기 어려운 &lt;strong&gt;성능, 용량, 비용&lt;/strong&gt;을 고려하며 개발할 수 있습니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;참고&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.yes24.com/Product/Goods/111378840&quot;&gt;http://www.yes24.com/Product/Goods/111378840&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[우아한테크세미나 코프링 정리]]></title><description><![CDATA[우아한테크세미나 어디 가서 코프링 매우 알은 체하기!를 보고 정리한 내용입니다.    코틀린이란? JVM…]]></description><link>https://jeongjaeeom.github.io/kotlin-spring-woowahan-tech/</link><guid isPermaLink="false">https://jeongjaeeom.github.io/kotlin-spring-woowahan-tech/</guid><pubDate>Tue, 18 Oct 2022 20:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
 &lt;p&gt;우아한테크세미나 &lt;a href=&quot;https://www.youtube.com/watch?v=ewBri47JWII&quot;&gt;어디 가서 코프링 매우 알은 체하기!&lt;/a&gt;를 보고 정리한 내용입니다.   &lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;코틀린이란?&lt;/h2&gt;
@@ -211,4 +533,196 @@
 &lt;h2&gt;참고&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=ewBri47JWII&quot;&gt;[LIVE 다시보기] 어디 가서 코프링 매우 알은 체하기! : 9월 우아한테크세미나&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[리눅스 서버 터미널 기본 설정]]></title><description><![CDATA[리눅스 서버 설치 후 기본적인 터미널 설정을 진행해봅니다.   인스턴스의  기준으로 작성되었습니다. 터미널 세션 타임아웃(Sessio Timeout) 설정 Sessio Timeout…]]></description><link>https://jeongjaeeom.github.io/linux-basic-terminal-settings/</link><guid isPermaLink="false">https://jeongjaeeom.github.io/linux-basic-terminal-settings/</guid><pubDate>Mon, 17 Oct 2022 20:00:00 GMT</pubDate><content:encoded>&lt;p&gt;리눅스 서버 설치 후 기본적인 터미널 설정을 진행해봅니다.  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;AWS EC2&lt;/code&gt;인스턴스의 &lt;code class=&quot;language-text&quot;&gt;Amazon Linux 2&lt;/code&gt; 기준으로 작성되었습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;터미널 세션 타임아웃(Sessio Timeout) 설정&lt;/h2&gt;
+&lt;p&gt;Sessio Timeout을 설정 하여 일정 시간 작업을 하지 않을 경우 터미널 연결을 해제 하도록 설정할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;프로파일(.profile) 파일 생성 및 내용 입력&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;vi&lt;/span&gt; ~/.profile
+&lt;span class=&quot;token assign-left variable&quot;&gt;HISTTIMEFORMAT&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;%F %T -- &quot;&lt;/span&gt;
+&lt;span class=&quot;token builtin class-name&quot;&gt;export&lt;/span&gt; HISTTIMEFORMAT
+&lt;span class=&quot;token builtin class-name&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;TMOUT&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;600&lt;/span&gt; 
+
+$ &lt;span class=&quot;token builtin class-name&quot;&gt;source&lt;/span&gt; ~/.profile&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;HISTTIMEFORMAT&lt;/code&gt; - history 명령 결과에 시간 값을 추가한다.&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;TMOUT=600&lt;/code&gt; - 세션 타임아웃을 설정한다(초 단위).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;쉘(Shell) Prompt 변경하기&lt;/h2&gt;
+&lt;p&gt;Bastion 서버 등과 같이 서버를 구분해야하는 경우에 Shell Prompt를 설정하여 서버 관리자의 인적 장애를 예방할 수 있다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;vi&lt;/span&gt; ~/.bashrc
+&lt;span class=&quot;token assign-left variable&quot;&gt;USERNAME&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;BASTION
+&lt;span class=&quot;token assign-left variable&quot;&gt;&lt;span class=&quot;token environment constant&quot;&gt;PS1&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;[\e[1;31m$USERNAME\e[0m][\e[1;32m\t\e[0m][\e[1;33m\u\e[0m@\e[1;36m\h\e[0m \w] \n\$ \[\033[00m\]&apos;&lt;/span&gt;
+
+$ &lt;span class=&quot;token builtin class-name&quot;&gt;source&lt;/span&gt; ~/.bashrc&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Logger를 사용하여 감사로그 남기기&lt;/h2&gt;
+&lt;p&gt;서버에서 작업할 경우, 작업 이력 히스토리를 기록해 두어야 장애 발싱시 원인 분석을 할 수 있습니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;vi&lt;/span&gt; ~/.bashrc
+&lt;span class=&quot;token assign-left variable&quot;&gt;tty&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;tty&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;awk&lt;/span&gt; -F&lt;span class=&quot;token string&quot;&gt;&quot;/dev/&quot;&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;{print $2}&apos;&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;`&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token assign-left variable&quot;&gt;IP&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;`&lt;/span&gt;w &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token variable&quot;&gt;$tty&lt;/span&gt;&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;{print $3}&apos;&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;`&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token builtin class-name&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;PROMPT_COMMAND&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;logger -p local0.debug &quot;[USER]$(whoami) [IP]$IP [PID]$$ [PWD]`pwd` [COMMAND] $(history 1 | sed &quot;s/^[ ]*[0-9]\+[ ]*//&quot; )&quot;&apos;&lt;/span&gt;
+
+$ &lt;span class=&quot;token builtin class-name&quot;&gt;source&lt;/span&gt;  ~/.bashrc&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;vi&lt;/span&gt; /etc/rsyslog.d/50-default.conf
+local0.*  /var/log/command.log
+
+$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;service&lt;/span&gt; rsyslog restart
+$ &lt;span class=&quot;token function&quot;&gt;tail&lt;/span&gt; -f /var/log/command.log&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;참고&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://edu.nextstep.camp/c/VI4PhjPA/&quot;&gt;인프라 공방&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Git 저장소 복제 하기]]></title><description><![CDATA[원격리포지터리를 옮기고 싶은 경우   옵션을 사용하여 깃 커밋 히스토리 그대로 푸시하는 방법을 알아보자.   1. 기존 프로젝트 클론 2. 신규 프로젝트  옵션으로 푸시 3. 기존 프로젝트 삭제 Reference Duplicating a…]]></description><link>https://jeongjaeeom.github.io/git-mirror/</link><guid isPermaLink="false">https://jeongjaeeom.github.io/git-mirror/</guid><pubDate>Fri, 29 Jul 2022 20:00:00 GMT</pubDate><content:encoded>&lt;p&gt;원격리포지터리를 옮기고 싶은 경우  &lt;code class=&quot;language-text&quot;&gt;--mirror&lt;/code&gt; 옵션을 사용하여 깃 커밋 히스토리 그대로 푸시하는 방법을 알아보자.  &lt;/p&gt;
+&lt;h3&gt;1. 기존 프로젝트 클론&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; clone --bare https://github.com/exampleuser/old-repository.git&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;2. 신규 프로젝트 &lt;code class=&quot;language-text&quot;&gt;--mirror&lt;/code&gt; 옵션으로 푸시&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; old-repository.git
+$ &lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; push --mirror https://github.com/exampleuser/new-repository.git&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;3. 기존 프로젝트 삭제&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;..&lt;/span&gt;
+$ &lt;span class=&quot;token function&quot;&gt;rm&lt;/span&gt; -rf old-repository.git&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Reference&lt;/h2&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.github.com/en/repositories/creating-and-managing-repositories/duplicating-a-repository&quot;&gt;Duplicating a repository&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[AWS EC2 Pinpoint 설치 with docker]]></title><description><![CDATA[EC2 구성 AMI - Amazon Linux 2 AMI (HVM) - Kernel 5.10, SSD Volume Type 선택 도커 및 Git 설치 도커 컴포즈 설치 Pinpoint…]]></description><link>https://jeongjaeeom.github.io/pinpoint-install-with-docker/</link><guid isPermaLink="false">https://jeongjaeeom.github.io/pinpoint-install-with-docker/</guid><pubDate>Wed, 15 Jun 2022 14:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;EC2 구성&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;AMI - &lt;strong&gt;Amazon Linux 2 AMI (HVM) - Kernel 5.10, SSD Volume Type 선택&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;도커 및 Git 설치&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# docker 설치&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; amazon-linux-extras &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# docker 실행&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;service&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; start
+
+&lt;span class=&quot;token comment&quot;&gt;# docker 사용자 ec2-user 그룹에 추가&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;usermod&lt;/span&gt; -a -G &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; ec2-user
+
+&lt;span class=&quot;token comment&quot;&gt;# Git 설치&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; yum &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; -y
+
+&lt;span class=&quot;token comment&quot;&gt;# 재부팅&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;reboot&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;도커 컴포즈 설치&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# docker-compose 설치&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;curl&lt;/span&gt; -L https://github.com/docker/compose/releases/latest/download/docker-compose-&lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;uname&lt;/span&gt; -s&lt;span class=&quot;token variable&quot;&gt;)&lt;/span&gt;&lt;/span&gt;-&lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;uname&lt;/span&gt; -m&lt;span class=&quot;token variable&quot;&gt;)&lt;/span&gt;&lt;/span&gt; -o /usr/local/bin/docker-compose
+
+&lt;span class=&quot;token comment&quot;&gt;# 권한 수정&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;chmod&lt;/span&gt; +x /usr/local/bin/docker-compose
+
+&lt;span class=&quot;token comment&quot;&gt;# Verify&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;docker-compose&lt;/span&gt; version&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Pinpoint 설치&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; clone https://github.com/naver/pinpoint-docker.git
+&lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; pinpoint-docker
+&lt;span class=&quot;token function&quot;&gt;docker-compose&lt;/span&gt; pull &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;docker-compose&lt;/span&gt; up -d&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;위 명령어 실행시 아래 와 같이 오류 발생하여 권한처리 후 정상동작 확인&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# docker-compose pull &amp;amp;&amp;amp; docker-compose up -d 실행 시 오류 발생!!&lt;/span&gt;
+Got permission denied &lt;span class=&quot;token keyword&quot;&gt;while&lt;/span&gt; trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get &lt;span class=&quot;token string&quot;&gt;&quot;http://%2Fvar%2Frun%2Fdocker.sock/v1.24/info&quot;&lt;/span&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;:&lt;/span&gt; dial unix /var/run/docker.sock: connect: permission denied
+
+&lt;span class=&quot;token comment&quot;&gt;# docker.sock 권한 변경&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;chmod&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;666&lt;/span&gt; /var/run/docker.sock
+
+&lt;span class=&quot;token comment&quot;&gt;# 다시 실행&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;docker-compose&lt;/span&gt; pull &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;docker-compose&lt;/span&gt; up -d&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Pinpoint Web 접속&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://%5BPinpoint-Web-host%5D:8079&quot;&gt;http://[Pinpoint-Web-host]:8079&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Sample App(quickapp) 앱 확인&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;figure class=&apos;gatsby-resp-image-figure&apos; style=&apos;margin-bottom: 16px;&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; &apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/b9823054dd0c6077eee3f650bc6f8534/1758b/demo.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 98.23529411764706%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAABYlAAAWJQFJUiTwAAACbUlEQVQ4y51Ty27TQBT1v5A4PCSaNGldqIIKC1Y8Vog9UoXUINEKyqa7SjzEilYglPIVsENIdFFKFxCQgOyC2jRtpT5IYsfjmbHjHOY6cbBCaVJGOrrO2HNyzr1nNCN1BqNjIzAyGSSHkhhODUOP6QpxnNQTiKsaOxHDKV1HIq7jdDyBTPIs0pkUzhkGjBED59MpjA0nkU4OQZvILSJ79wWuTD/DzPwi7j3KY/ZxHg+eLCE3n8f0w5eYffoKl2/NYfTqJLIzc7hwI4fstdsYvz6J8Zv3MTH1HBenFnDpzgK0j2WJD2UXX3cktqoMlarAdk0GtbTH8XOfYeOXg+Vv63i7VsTy+hZerxbwZqWId59KeP9jFyuVFlY3PRR2fGjwHARwHUiu4NgQHbicqd8MgtlouQLwXaAp8bnCsbZJQiS+bKt9NBXUO19As5kDAlNwHALvgjl/9ljwHYPDOWy1V7csVOsNNGwGy7RwUDVh2Q40znlwKKz9IOg7wWE2GoqAg1bLddUfSQjXaxMOioBQiKAypdaVEtHVbDaPT0iVDvq+3yVpeh48qkcR9rYhukcwTRO2bcNTZFIpdZVtgtbXoqqyYzO0TO/IMj1HF6nW+pHVGzZ261Z7GB1CUkT2goG0WgEGIpRColgpo1D6jgPLVjltvyNCIiZSeibbofU+hAKVvX0UN8pB/nikl0QWqgtxJGHUdti3cCikJpxydBHpwFOODiW0TLUX/5VDUijUYUb76p47Kj4DxeZfN4UiU6vVAuK/YnNYaPsRkpLDetiNzSBkvCeH0fiE/Qssk/zjKAzvcpA7V6Ku+iel283ib8+DwKIXYZhXAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;pinpoint-demo&apos; title=&apos;pinpoint-demo&apos; src=&apos;/static/b9823054dd0c6077eee3f650bc6f8534/ca1dc/demo.png&apos; srcset=&apos;/static/b9823054dd0c6077eee3f650bc6f8534/e7570/demo.png 170w,
+/static/b9823054dd0c6077eee3f650bc6f8534/f46e7/demo.png 340w,
+/static/b9823054dd0c6077eee3f650bc6f8534/ca1dc/demo.png 680w,
+/static/b9823054dd0c6077eee3f650bc6f8534/02d09/demo.png 1020w,
+/static/b9823054dd0c6077eee3f650bc6f8534/9d567/demo.png 1360w,
+/static/b9823054dd0c6077eee3f650bc6f8534/1758b/demo.png 2686w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&apos;gatsby-resp-image-figcaption&apos;&gt;pinpoint-demo&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;h2&gt;Reference&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://gist.github.com/npearce/6f3c7826c7499587f00957fee62f8ee9&quot;&gt;https://gist.github.com/npearce/6f3c7826c7499587f00957fee62f8ee9&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://pinpoint-apm.gitbook.io/pinpoint/&quot;&gt;https://pinpoint-apm.gitbook.io/pinpoint/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://newbedev.com/shell-error-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socket-at-unix-var-run-docker-sock-get-http-2fvar-2frun-2fdocker-sock-v1-24-info-dial-unix-var-run-docker-sock-connect-permission-denied-code-example&quot;&gt;https://newbedev.com/shell-error-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socket-at-unix-var-run-docker-sock-get-http-2fvar-2frun-2fdocker-sock-v1-24-info-dial-unix-var-run-docker-sock-connect-permission-denied-code-example&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[AWS EC2 Pinpoint 설치]]></title><description><![CDATA[EC2 구성 Hbase, Collector, Web 하나의 EC2에 설치 AMI - Amazon Linux 2 AMI (HVM) - Kernel 5.10, SSD Volume Type 선택 Security Group InBound Open Port…]]></description><link>https://jeongjaeeom.github.io/pinpoint-install/</link><guid isPermaLink="false">https://jeongjaeeom.github.io/pinpoint-install/</guid><pubDate>Wed, 15 Jun 2022 13:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;EC2 구성&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Hbase, Collector, Web 하나의 EC2에 설치&lt;/li&gt;
+&lt;li&gt;AMI - &lt;strong&gt;Amazon Linux 2 AMI (HVM) - Kernel 5.10, SSD Volume Type 선택&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Security Group InBound Open Port: 8000 - 9999&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Pinpoint 설치&lt;/h2&gt;
+&lt;p&gt;java 8 설치(Hbase 버전 지원으로 인해 java 8설치&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&apos;gatsby-resp-image-figure&apos; style=&apos;margin-bottom: 16px;&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 365px; &apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/d8103a4b72f315051f46fbedeb4c8edc/dbde8/java-support-by-release-line.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 62.35294117647059%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAsTAAALEwEAmpwYAAAB4klEQVQoz1VTy3baMBDl/3+mXWYTuugWQroIDwN1CDQOL79lWZbk25mxces5BzS687q6AxNba3wFa2RfEVR8x/3jgPxyxi3cIz59IPn8g+J6EZxz4uMBKonB1rYtfWFkE+ccGmNgbYOm4U/nq6JATcOstRJn3NCpdSW+915iUt/XcvMJT9nutnhbvmG1XmHxusD8ZY6syBG+h5j+mGITbLBcLRFsA1hnsdvv8Dx9RkA41+x/72FoCPcShkmaIM1SaGKU5RlielKpShRlgevtCq008jxHTkO01nIynlP+nWr5zuyHhmxM/3w+oyzL4e5bL/42WqOsiwEX7chUEMBXlfjcRxqyFmw8OQxDJHEid8bbXvFf7yRBlQ74w4rFCxwxH/IfDFn8pteAGdR1LQOMqcX3zovo/+OG/JpeUFMd1w9P5gacENNPZj6fYUvCc4IiDatKwTUWT7PvOF0OsNSUca2VbP5p9g3R7QRrGqkZGvKFp/PJDDomVY9rFJZw84h3ODMsKyOLHDF8LIW3eDwekSSJBETkXq9isYBNU1HUyVJYM4P4/pMkMr2GbtxQKYUoipCm6UjkbpsbuLLbsu/z29Yiy15psB0vZWDT/vsPcZAxPrkBR3zfrMPdsG3v2yGXe/wF9GWewC3cDzgAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;Screen Shot 2022-01-10 at 3.16.01 PM.png&apos; title=&apos;Screen Shot 2022-01-10 at 3.16.01 PM.png&apos; src=&apos;/static/d8103a4b72f315051f46fbedeb4c8edc/dbde8/java-support-by-release-line.png&apos; srcset=&apos;/static/d8103a4b72f315051f46fbedeb4c8edc/e7570/java-support-by-release-line.png 170w,
+/static/d8103a4b72f315051f46fbedeb4c8edc/f46e7/java-support-by-release-line.png 340w,
+/static/d8103a4b72f315051f46fbedeb4c8edc/dbde8/java-support-by-release-line.png 365w&apos; sizes=&apos;(max-width: 365px) 100vw, 365px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&apos;gatsby-resp-image-figcaption&apos;&gt;Screen Shot 2022-01-10 at 3.16.01 PM.png&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Java 8 설치&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; yum &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; -y java-1.8.0-openjdk-devel.x86_64
+
+readlink -f /usr/bin/java
+&lt;span class=&quot;token comment&quot;&gt;# /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.312.b07-1.amzn2.0.2.x86_64/jre/bin/java&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;# java 경로까지만 처리&lt;/span&gt;
+
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;vim&lt;/span&gt; /etc/profile
+&lt;span class=&quot;token comment&quot;&gt;# export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.312.b07-1.amzn2.0.2.x86_64&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;# 해당 파일 제일 하단에 입력 후 재접속&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# 확인&lt;/span&gt;
+&lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$JAVA_HOME&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;# /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.312.b07-1.amzn2.0.2.x86_64&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Hbase 설치&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# HBase 다운로드&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;wget&lt;/span&gt; https://archive.apache.org/dist/hbase/1.4.14/hbase-1.4.14-bin.tar.gz
+
+&lt;span class=&quot;token comment&quot;&gt;# 압축해제&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;tar&lt;/span&gt; xvf hbase-1.4.14-bin.tar.gz
+
+&lt;span class=&quot;token comment&quot;&gt;# create symbolic link&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;ln&lt;/span&gt; -s hbase-1.4.14 hbase
+
+&lt;span class=&quot;token comment&quot;&gt;# Start hbase&lt;/span&gt;
+hbase/bin/start-hbase.sh
+
+&lt;span class=&quot;token comment&quot;&gt;# Pinpoint 에서 제공하는 Hbase 스크립트 다운로드&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;wget&lt;/span&gt; https://raw.githubusercontent.com/pinpoint-apm/pinpoint/master/hbase/scripts/hbase-create.hbase
+
+&lt;span class=&quot;token comment&quot;&gt;# 스크립트 실행&lt;/span&gt;
+hbase/bin/hbase shell hbase-create.hbase&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Pinpoint Collector 설치&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Download Collector &lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;wget&lt;/span&gt; https://github.com/pinpoint-apm/pinpoint/releases/download/v2.3.3/pinpoint-collector-boot-2.3.3.jar
+
+&lt;span class=&quot;token comment&quot;&gt;# 실행권한 부여&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;chmod&lt;/span&gt; +x pinpoint-collector-boot-2.3.3.jar
+
+&lt;span class=&quot;token comment&quot;&gt;# 실행&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;nohup&lt;/span&gt; java -jar -Dpinpoint.zookeeper.address&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;localhost pinpoint-collector-boot-2.3.3.jar &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;/dev/null &lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;2&lt;/span&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;&amp;amp;1&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Pinpoint Web 설치&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Download Web&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;wget&lt;/span&gt; https://github.com/pinpoint-apm/pinpoint/releases/download/v2.3.3/pinpoint-web-boot-2.3.3.jar
+
+&lt;span class=&quot;token comment&quot;&gt;# 실행권한 부여&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;chmod&lt;/span&gt; +x pinpoint-web-boot-2.3.3.jar
+
+&lt;span class=&quot;token comment&quot;&gt;# 실행&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;nohup&lt;/span&gt; java -jar -Dpinpoint.zookeeper.address&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;localhost pinpoint-web-boot-2.3.3.jar &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;/dev/null &lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;2&lt;/span&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;&amp;amp;1&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Reference&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://jojoldu.tistory.com/573&quot;&gt;https://jojoldu.tistory.com/573&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://hbase.apache.org/book.html&quot;&gt;https://hbase.apache.org/book.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://pinpoint-apm.gitbook.io/pinpoint/&quot;&gt;https://pinpoint-apm.gitbook.io/pinpoint/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content:encoded></item></channel></rss>
