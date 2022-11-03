@@ -1,7 +1,7 @@
 ---
 title: "DNS(Domain Name System) 이해하기"
 description:
-date: 2022-06-15 13:00:00
+date: 2022-11-03 13:00:00
 tags:
 - DNS
 - network
