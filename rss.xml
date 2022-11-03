@@ -1,4 +1,104 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed of jeongjae's.blog]]></title><description><![CDATA[Hello :) I'm jeongjae]]></description><link>https://jeongjaeeom.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 03 Nov 2022 05:39:03 GMT</lastBuildDate><item><title><![CDATA[k6로 부하테스트 시작하기]]></title><description><![CDATA[부하테스트 도구 중 하나인 k6로 부하테스트 시작해보자  k6 설치 는 k6에서 사용하는 PGP V4 서명을 지원하지 않기 때문에 설치시 비활성화 옵션을 추가하여 설치 k6 실행 k6는 JavaScript ES…]]></description><link>https://jeongjaeeom.github.io/k6/</link><guid isPermaLink="false">https://jeongjaeeom.github.io/k6/</guid><pubDate>Mon, 31 Oct 2022 20:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[RSS Feed of jeongjae's.blog]]></title><description><![CDATA[Hello :) I'm jeongjae]]></description><link>https://jeongjaeeom.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 03 Nov 2022 05:44:35 GMT</lastBuildDate><item><title><![CDATA[DNS(Domain Name System) 이해하기]]></title><description><![CDATA[DNS(Domain Name System)란 무엇인가? DNS(Domain Name System)란 도메인 주소를 IP주소로 변환하는 시스템이다. 즉, 과 같은 컴퓨터의 도메인 이름을 과 같은 IP 주소로 변환해주는 시스템이다. DNS…]]></description><link>https://jeongjaeeom.github.io/dns/</link><guid isPermaLink="false">https://jeongjaeeom.github.io/dns/</guid><pubDate>Thu, 03 Nov 2022 13:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;DNS(Domain Name System)란 무엇인가?&lt;/h2&gt;
+&lt;p&gt;DNS(Domain Name System)란 도메인 주소를 IP주소로 변환하는 시스템이다. 즉, &lt;code class=&quot;language-text&quot;&gt;www.example.com&lt;/code&gt;과 같은 컴퓨터의 도메인 이름을 &lt;code class=&quot;language-text&quot;&gt;192.168.1.0&lt;/code&gt;과 같은 IP 주소로 변환해주는 시스템이다.&lt;/p&gt;
+&lt;h2&gt;DNS를 왜 사용하는가?&lt;/h2&gt;
+&lt;p&gt;인터넷은 TCP/IP 기초하여 만들어졌다. TCP/IP 기반의 네트워크는 IP주소로 서로 통신하게 된다. 즉, IP 주소를 모르면 통신이 불가능하다. 그렇다면 통신을 할 때 URL에 IP주소를 사용하면 좋을 것이라고 생각할 수 있다. 실제 IP주소를 사용해도 올바르게 작동한다.&lt;/p&gt;
+&lt;p&gt;하지만, 전화번호를 기억하기가 어려운 것과 마찬가지로 숫자를 나열한 IP주소는 기억하기 어렵다. 그렇기 때문에 IP주소가 아닌 기억하기 쉬운 도메인명을 사용하는 것이 좋기 때문에 DNS를 사용한다.&lt;/p&gt;
+&lt;h2&gt;DNS는 어떻게 작동하는가?&lt;/h2&gt;
+&lt;h3&gt;DNS의 기본적인 작동원리&lt;/h3&gt;
+&lt;p&gt;DNS 작동원리를 간단히 설명하면 클라이언트(PC)에서 조회 메시지(이름, 클래스, 타입)를 DNS 서버에 요청하고, DNS 서버는 클라이언트에서 전송한 조회메시지를 확인 후 그에 대응하는 IP주소를 응답하는 방식이다.&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&apos;gatsby-resp-image-figure&apos; style=&apos;margin-bottom: 16px;&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; &apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/aa8c8160d85c18f44750dbab916a9c74/7b4c8/DNS-%EC%9B%90%EB%A6%AC.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 56.470588235294116%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABYlAAAWJQFJUiTwAAABNUlEQVQoz6VSS26DQAzlPjlPjoG4ECyQYI24B3t2CBrRJIQE8Sd84s5zxWiakGxqybI9tt/4p43jSMuy/I/nmeUspAYF9Hg86B2pvq249Q1SA+qzU+V3QLDXqoTBEjYDbgGoiefzWepd29I0TWwPw0B5nlN2OlFd17+AcBwOB/I8j8IwpK7rqLheORBkmiYZhsF6K8CiKKIsy2jtzLZt2u12Mp4Bfd+n/X5PlmVxIH6rqooDgiAgx3H4dywQjMogQa7rkq7r/MaAavlN0/xpF8BxHFOSJHQ8Hl/GgZyr6AYYyJUzBEHebjduZ3Uqg3yZa9/3DHa5XGS1m1uGsygKDkQC9C9RYZqmVJalBMHMMO/n65CAz1tGhff7nVqR9C3ATqLlRiwFbapFqHmbgJ9O6NO9rnf5A6ckUMjyoVcVAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;DNS 원리&apos; title=&apos;DNS 원리&apos; src=&apos;/static/aa8c8160d85c18f44750dbab916a9c74/ca1dc/DNS-%EC%9B%90%EB%A6%AC.png&apos; srcset=&apos;/static/aa8c8160d85c18f44750dbab916a9c74/e7570/DNS-%EC%9B%90%EB%A6%AC.png 170w,
+/static/aa8c8160d85c18f44750dbab916a9c74/f46e7/DNS-%EC%9B%90%EB%A6%AC.png 340w,
+/static/aa8c8160d85c18f44750dbab916a9c74/ca1dc/DNS-%EC%9B%90%EB%A6%AC.png 680w,
+/static/aa8c8160d85c18f44750dbab916a9c74/02d09/DNS-%EC%9B%90%EB%A6%AC.png 1020w,
+/static/aa8c8160d85c18f44750dbab916a9c74/9d567/DNS-%EC%9B%90%EB%A6%AC.png 1360w,
+/static/aa8c8160d85c18f44750dbab916a9c74/7b4c8/DNS-%EC%9B%90%EB%A6%AC.png 2438w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&apos;gatsby-resp-image-figcaption&apos;&gt;DNS 원리&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;자신의 PC에 IP 주소뿐만이 아닌 도메인명으로도 접속할 수 있게 하기 위해 DNS 서버에게 자신의 IP주소(&lt;code class=&quot;language-text&quot;&gt;93.184.216.34&lt;/code&gt;)와 도메인명(&lt;code class=&quot;language-text&quot;&gt;example.com&lt;/code&gt;)으로 등록을 요청한다.&lt;/li&gt;
+&lt;li&gt;DNS 서버는 1번의 요청을 받고 해당 도메인명과 IP주소를 매핑하여 서버에 기록한다.&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;example.com&lt;/code&gt;이라는 도메인명을 가진 서버에 접속하고 싶은 클라이언트에서 DNS서버에게 &lt;code class=&quot;language-text&quot;&gt;example.com&lt;/code&gt;도메인명과 함께 IP주소를 응답을 요청한다.&lt;/li&gt;
+&lt;li&gt;DNS서버는 기록되어있는 도메인명과 맵핑된 IP주소를 응답한다.&lt;/li&gt;
+&lt;li&gt;IP주소를 응답받은 클라이언트는 해당 IP주소로 서버에 접속한다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;지금까지 기본적인 DNS 작동원리를 살펴보았다. 하지만 DNS의 작동원리는 위처럼 간단하지 않다. 좀 더 상세하게 DNS 작동원리에 대해 알아보자.&lt;/p&gt;
+&lt;h3&gt;도메인 계층 구조&lt;/h3&gt;
+&lt;p&gt;우선 도메인 계층 구조를 알아보자. 도메인명은 계층 구조로 되어있으면 맨 오른쪽 생략된 Root(&lt;code class=&quot;language-text&quot;&gt;.&lt;/code&gt;)를 시작으로 뒤에서 앞으로 해석되며 &lt;code class=&quot;language-text&quot;&gt;.&lt;/code&gt; 으로 각 계층의 경계를 표시한다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/7b423c14ec2bbc0bcfd3fa50ffc90ccf/7b4c8/%EB%8F%84%EB%A9%94%EC%9D%B8%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 56.470588235294116%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABYlAAAWJQFJUiTwAAABc0lEQVQoz51Su6rCQBTMF/kbfoClrY2djfgDluktTBPwlcpOREUk4LNSsRQbDYKgRhTFRzIyBzY3uVwt7sCSs7O7s5PZoz0eD7xeL3ieh/+CZzmezyc03/dBUcuyUCgUUC6X0Wg00G63UalUUKvVZK1er8MwDJimiclkgmq1ilKphGazKYYIamnK3Ww2w3A4RKvVks2se70eOp0OFouFHOx2u7BtG9PpFP1+H+PxGPP5HOfzOXCqKXWCNd2GQe5wOGC/3+NyuQT86XTC8XjE9XrFdrvF7XYTXgRplXBdF7vdLhAizwPr9RqbzUZE6YI869VqJZc4jhNcFhHM5XJIJBJSM2DyFEgmk8hms8Lf73f5jkYjxGIxiSYej6NYLP4IKuTzeei6HggSdJjJZOSxCBUJ802lUpJ9Op3GYDCICiqXv+swFP9pnVoRQdbheXioPg2LqlhUpwRt8+lWxTF8vuo3d5E+/MuRGsRyuZQO+LZP/cUbB1AzN+/xN14AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;       &apos; title=&apos;       &apos; src=&apos;/static/7b423c14ec2bbc0bcfd3fa50ffc90ccf/ca1dc/%EB%8F%84%EB%A9%94%EC%9D%B8%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0.png&apos; srcset=&apos;/static/7b423c14ec2bbc0bcfd3fa50ffc90ccf/e7570/%EB%8F%84%EB%A9%94%EC%9D%B8%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0.png 170w,
+/static/7b423c14ec2bbc0bcfd3fa50ffc90ccf/f46e7/%EB%8F%84%EB%A9%94%EC%9D%B8%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0.png 340w,
+/static/7b423c14ec2bbc0bcfd3fa50ffc90ccf/ca1dc/%EB%8F%84%EB%A9%94%EC%9D%B8%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0.png 680w,
+/static/7b423c14ec2bbc0bcfd3fa50ffc90ccf/02d09/%EB%8F%84%EB%A9%94%EC%9D%B8%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0.png 1020w,
+/static/7b423c14ec2bbc0bcfd3fa50ffc90ccf/9d567/%EB%8F%84%EB%A9%94%EC%9D%B8%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0.png 1360w,
+/static/7b423c14ec2bbc0bcfd3fa50ffc90ccf/7b4c8/%EB%8F%84%EB%A9%94%EC%9D%B8%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0.png 2438w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;위의 그림에서 보이듯이 맨 오른쪽 ‘.’은 Root 도메인이라고 하고, ‘com’은 Top-level 도메인 example 은 Second-level 도메인, blog는 sub 도메인으로 구분 된다.&lt;/p&gt;
+&lt;h3&gt;DNS 서버 계층 구조&lt;/h3&gt;
+&lt;p&gt;DNS 서버는 도메인 계층과 비슷하게 계층적으로 구성된다. 각 DNS 서버는 자신이 담당하는 영역에 대한 도메인을 관리한다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/692bda841c514f39c12a37e5d9830ec7/97114/DNS%EC%84%9C%EB%B2%84-%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 36.47058823529412%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsTAAALEwEAmpwYAAABZ0lEQVQoz2WRi1LaQBSGff+nqdWZOsU6rYoK7VgoEEWuCRADxEQgJNlNdj83S9uZ2jPz7+65/XsuR0pplFKUpYG5ldbm1lSyySS17pxae8JZa0xzvKZyaV3lHFDl2LzfOOKd6LKwKApJJiTrbUYQJ/jRjijJkVJan1YlVHgnlrAwPz1vcrxwyyiI8OM9QgjSXJh3gruMcFevrLapIRTsM2FjxyZ29pIQ7qWt2hwHwr1UfOsvueh6nBt8n77Y39JC87Uf8KXjUut43M9erT2Rxv74zEVvxuf2lHsvsqP4S1iJrSjLLKqW/huF1v/oRVGQpimZiS/LP60bQjdKuXyYczMICHaSwXLDVaUPl4SJwI1zqzfMQuJcEaYlV48L6n2fSSxw/A2XjkdzEprKzVKcWciH6zandz2mYcLPkc9x/RenDYfVLsdZxHy86fDpxxPrRNpZn9x2jL+HE2xpDhYcX7eotYbshOINmh4QyX1v5MkAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;DNS       &apos; title=&apos;DNS       &apos; src=&apos;/static/692bda841c514f39c12a37e5d9830ec7/ca1dc/DNS%EC%84%9C%EB%B2%84-%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0.png&apos; srcset=&apos;/static/692bda841c514f39c12a37e5d9830ec7/e7570/DNS%EC%84%9C%EB%B2%84-%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0.png 170w,
+/static/692bda841c514f39c12a37e5d9830ec7/f46e7/DNS%EC%84%9C%EB%B2%84-%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0.png 340w,
+/static/692bda841c514f39c12a37e5d9830ec7/ca1dc/DNS%EC%84%9C%EB%B2%84-%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0.png 680w,
+/static/692bda841c514f39c12a37e5d9830ec7/97114/DNS%EC%84%9C%EB%B2%84-%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0.png 690w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;위 예시와 같이 루트 DNS 서버 부터 하위로 com, org 등과 같은 최상위 도메인을 관리하는 DNS 서버가 있으며 그 하위로 yahoo, amazon 등과 같은 2차 도메인을 관리하는 DNS서버 그리고 또 그 하위 도메인을 관리하는 DNS서버가 있다.&lt;/p&gt;
+&lt;p&gt;이렇게 계층적으로 전세계에 수천 수만대의 DNS서버가 협력하여 시스템을 이루고 있다.&lt;/p&gt;
+&lt;aside&gt;
+💡 루트 DNS 서버는 총 13개이며 최상위 도메인, 2차 도메인 등을 관리하는 DNS 서버는 많은 수의 서버가 존재하고 있다.
+&lt;/aside&gt;
+&lt;h4&gt;루트 DNS 서버&lt;/h4&gt;
+&lt;p&gt;루트 DNS 서버는 ICANN 이라는 비영리 단체에서 관리하는 DNS 서버이며, 전 세계에 13대의 루트 DNS 서버가 존재한다.  &lt;del&gt;즉 13대의 루트 DNS 서버를 찾아내어 파괴하면 인터넷을 마비 시킬수 있다&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
+      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/08c6bbbcfbb67a06505204f4fd6b65fe/9d8cf/%EB%A3%A8%ED%8A%B8%EB%84%A4%EC%9E%84%EC%84%9C%EB%B2%84%ED%91%9C.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
+    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 74.11764705882352%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAsTAAALEwEAmpwYAAACT0lEQVQ4y1VT2Y6jMBDM///caqV9WymaBALY+LY5knnorWrI7MyDRUS6y3VxGSYr3TDLvZ9ktEE+OjyNEx+KzL7IbQhifRYfi3SPSR6jlXGa9cnz6/cf3e0HI8Z6uTxGpwCpVHEhCS+YXZBb95DrfZSP3uD/WabzmNmLcVlKXWQCgb/XGy5OepnH/mUwUZwPEvICwKy/c2m6HHOVZd2kLas+Uy76LuRVXq9PmTE/zZgHeDdFqcsml9ESMJ4LVZf428cs6/aU/fmUbT9OhoraVvFpkVg2MIUiyE5lEY9LOKOAAcu5HoBcegPGsgJ0Pw8Aa4PUpmoS5q2L8NFIwSWlbSegCfAgqCdkF2JSiWTNoS9ADMeU1efOFDFh0RDv/Yg5MExN2npKtjC64WU8AcmQt9OTbf8P+PZwmKni+RUGyVhfQQSA/YRaIFUuc8GHqAMcXtZdtm+SVUEqcn0kcWnVEFmdUle1RyX3Y1CGLlYdZmWcdjDB7J8eUjLtoeTRNxBJkO2VQK7H7GWCZIKwKhGAPDR5hocM6p3wdkpmgAylgb3RUKzWpiy77GRo5qiFZB0I+j1lAtPbikP5uZSzEUcPnT9qwzmHL4mzZw8PhqwNQ2E1CPguOhOn4SEEFN5oD/fnC19N0FASdvvJaWCozSG5oiqURIasDYNi17j4lkxAY/BpxqbvLRj26CGLzeTJFJ/eEUpIByuC+1T1dk0ORi9nKF4ZWiR8MGQo/XB8KQ+bdA4eJvVw3TaVSoYEIXiF0T9CSaiL8wq4aOpVbaEd9QzlH9gNdmDBXs6KAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
+  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;       &apos; title=&apos;       &apos; src=&apos;/static/08c6bbbcfbb67a06505204f4fd6b65fe/ca1dc/%EB%A3%A8%ED%8A%B8%EB%84%A4%EC%9E%84%EC%84%9C%EB%B2%84%ED%91%9C.png&apos; srcset=&apos;/static/08c6bbbcfbb67a06505204f4fd6b65fe/e7570/%EB%A3%A8%ED%8A%B8%EB%84%A4%EC%9E%84%EC%84%9C%EB%B2%84%ED%91%9C.png 170w,
+/static/08c6bbbcfbb67a06505204f4fd6b65fe/f46e7/%EB%A3%A8%ED%8A%B8%EB%84%A4%EC%9E%84%EC%84%9C%EB%B2%84%ED%91%9C.png 340w,
+/static/08c6bbbcfbb67a06505204f4fd6b65fe/ca1dc/%EB%A3%A8%ED%8A%B8%EB%84%A4%EC%9E%84%EC%84%9C%EB%B2%84%ED%91%9C.png 680w,
+/static/08c6bbbcfbb67a06505204f4fd6b65fe/02d09/%EB%A3%A8%ED%8A%B8%EB%84%A4%EC%9E%84%EC%84%9C%EB%B2%84%ED%91%9C.png 1020w,
+/static/08c6bbbcfbb67a06505204f4fd6b65fe/9d8cf/%EB%A3%A8%ED%8A%B8%EB%84%A4%EC%9E%84%EC%84%9C%EB%B2%84%ED%91%9C.png 1216w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h4&gt;DNS 서버 탐색 과정&lt;/h4&gt;
+&lt;p&gt;DNS 서버는 각자 담당하는 도메인을 관리하게 되며 상위 DNS 서버는 하위 DNS 서버에 대한 정보를 알고있다. 즉 상위 DNS 서버에 도메인을 요청하면 자신이 알고있는 하위 DNS 서버의 IP주소 목록을 반환하고 해당 IP주소를 통해 다시 하위 DNS를 탐색을 하는 과정을 반복하여 최종적으로 목적지 주소를 알고 있는 DNS로 도달하게 된다.&lt;/p&gt;
+&lt;p&gt;클라이언트에서 &lt;a href=&quot;http://example.com&quot;&gt;example.com&lt;/a&gt; 을 접속한다고 가정해보자.
+&lt;del&gt;(그림 실력이 엉망이라 죄송합니다ㅠ)&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;images/DNS-%EC%84%9C%EB%B2%84-%ED%83%90%EC%83%89-%EA%B3%BC%EC%A0%95.png&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;모든 DNS 서버는 루트 DNS 서버의 주소를 알고 있다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;클라이언트 PC 브라우저에서 &lt;a href=&quot;http://example.com&quot;&gt;example.com&lt;/a&gt; 을 입력하면 운영체제에 설정된 DNS 서버에 요청한다.&lt;/li&gt;
+&lt;li&gt;DNS 서버에 캐시된 example.com의 IP 주소가 존재하면 해당 IP 주소를 반환하고 캐시된 정보가 없으면 ROOT DNS 서버에 요청한다.&lt;/li&gt;
+&lt;li&gt;ROOT DNS 서버는 example.com의 IP주소를 알지 못함으로 최상위 도메인(com)에 대해 알고 있는 최상위 도메인을 관리하는 DNS 서버의 IP 주소를 응답한다.&lt;/li&gt;
+&lt;li&gt;DNS 서버는 루트 DNS 서버가 응답한 최상위 DNS 서버의 IP 주소 목록을 확인하여 다시 최상위 DNS 서버에게 요청한다.&lt;/li&gt;
+&lt;li&gt;최상위 DNS 서버는 2차 도메인(example)을 알지 못함으로 2차 도메인을 알고 있는 DNS 서버의 IP 주소를 응답한다.&lt;/li&gt;
+&lt;li&gt;DNS 서버는 최상위 DNS 서버가 응답한 2차 DNS 서버의 IP 주소 목록을 확인하고 2차 DNS 서버에게 요청한다.&lt;/li&gt;
+&lt;li&gt;2차 DNS 서버는 example.com에 대한 IP 주소를 알고 있기 때문에 해당 하는 IP 주소를 반환한다.&lt;/li&gt;
+&lt;li&gt;DNS 서버는 최종목적지의 IP주소를 응답받아 해당 IP를 캐시한 후 클라이언트에게 IP 주소를 응답한다.&lt;/li&gt;
+&lt;li&gt;클라이언트 PC는 응답받은 IP주소로 서버에 접속한다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;마무리&lt;/h2&gt;
+&lt;p&gt;오늘 글에서는 DNS란 무엇인지, 왜 사용하는지, 어떻게 작동하는지에 대해 알아보았습니다. DNS는 인터넷 세상에서 매우 중요한 역할을 하는 시스템이라고 생각합니다. 오늘 글을 통해서 DNS 시스템에 대해 알고싶은 누군가에게 조금이나마 도움이되었으면 합니다 :)&lt;/p&gt;
+&lt;h2&gt;참고&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://youtube.com/playlist?list=PLuHgQVnccGMCI75J-rC8yZSVGZq3gYsFp&quot;&gt;WEB2-Domain Name System&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.yes24.com/Product/Goods/90640081&quot;&gt;성공과 실패를 결정하는 1%의 네트워크 원리&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.yes24.com/Product/Goods/32203210&quot;&gt;TCP/IP 쉽게, 더 쉽게&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://commons.wikimedia.org/wiki/File:Dns-server-hierarchy.gif&quot;&gt;Dns-server-hierarchy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=mpQZVYPuDGU&amp;#x26;t=188s&quot;&gt;How a DNS Server (Domain Name System) works.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[k6로 부하테스트 시작하기]]></title><description><![CDATA[부하테스트 도구 중 하나인 k6로 부하테스트 시작해보자  k6 설치 는 k6에서 사용하는 PGP V4 서명을 지원하지 않기 때문에 설치시 비활성화 옵션을 추가하여 설치 k6 실행 k6는 JavaScript ES…]]></description><link>https://jeongjaeeom.github.io/k6/</link><guid isPermaLink="false">https://jeongjaeeom.github.io/k6/</guid><pubDate>Mon, 31 Oct 2022 20:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
 &lt;p&gt;부하테스트 도구 중 하나인 k6로 부하테스트 시작해보자 &lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;k6 설치&lt;/h2&gt;
@@ -725,104 +825,4 @@ hbase/bin/hbase shell hbase-create.hbase&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;li&gt;&lt;a href=&quot;https://jojoldu.tistory.com/573&quot;&gt;https://jojoldu.tistory.com/573&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://hbase.apache.org/book.html&quot;&gt;https://hbase.apache.org/book.html&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://pinpoint-apm.gitbook.io/pinpoint/&quot;&gt;https://pinpoint-apm.gitbook.io/pinpoint/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[DNS(Domain Name System) 이해하기]]></title><description><![CDATA[DNS(Domain Name System)란 무엇인가? DNS(Domain Name System)란 도메인 주소를 IP주소로 변환하는 시스템이다. 즉, 과 같은 컴퓨터의 도메인 이름을 과 같은 IP 주소로 변환해주는 시스템이다. DNS…]]></description><link>https://jeongjaeeom.github.io/dns/</link><guid isPermaLink="false">https://jeongjaeeom.github.io/dns/</guid><pubDate>Wed, 15 Jun 2022 13:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;DNS(Domain Name System)란 무엇인가?&lt;/h2&gt;
-&lt;p&gt;DNS(Domain Name System)란 도메인 주소를 IP주소로 변환하는 시스템이다. 즉, &lt;code class=&quot;language-text&quot;&gt;www.example.com&lt;/code&gt;과 같은 컴퓨터의 도메인 이름을 &lt;code class=&quot;language-text&quot;&gt;192.168.1.0&lt;/code&gt;과 같은 IP 주소로 변환해주는 시스템이다.&lt;/p&gt;
-&lt;h2&gt;DNS를 왜 사용하는가?&lt;/h2&gt;
-&lt;p&gt;인터넷은 TCP/IP 기초하여 만들어졌다. TCP/IP 기반의 네트워크는 IP주소로 서로 통신하게 된다. 즉, IP 주소를 모르면 통신이 불가능하다. 그렇다면 통신을 할 때 URL에 IP주소를 사용하면 좋을 것이라고 생각할 수 있다. 실제 IP주소를 사용해도 올바르게 작동한다.&lt;/p&gt;
-&lt;p&gt;하지만, 전화번호를 기억하기가 어려운 것과 마찬가지로 숫자를 나열한 IP주소는 기억하기 어렵다. 그렇기 때문에 IP주소가 아닌 기억하기 쉬운 도메인명을 사용하는 것이 좋기 때문에 DNS를 사용한다.&lt;/p&gt;
-&lt;h2&gt;DNS는 어떻게 작동하는가?&lt;/h2&gt;
-&lt;h3&gt;DNS의 기본적인 작동원리&lt;/h3&gt;
-&lt;p&gt;DNS 작동원리를 간단히 설명하면 클라이언트(PC)에서 조회 메시지(이름, 클래스, 타입)를 DNS 서버에 요청하고, DNS 서버는 클라이언트에서 전송한 조회메시지를 확인 후 그에 대응하는 IP주소를 응답하는 방식이다.&lt;/p&gt;
-&lt;p&gt;&lt;figure class=&apos;gatsby-resp-image-figure&apos; style=&apos;margin-bottom: 16px;&apos;&gt;
-    &lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; &apos;&gt;
-      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/aa8c8160d85c18f44750dbab916a9c74/7b4c8/DNS-%EC%9B%90%EB%A6%AC.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
-    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 56.470588235294116%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABYlAAAWJQFJUiTwAAABNUlEQVQoz6VSS26DQAzlPjlPjoG4ECyQYI24B3t2CBrRJIQE8Sd84s5zxWiakGxqybI9tt/4p43jSMuy/I/nmeUspAYF9Hg86B2pvq249Q1SA+qzU+V3QLDXqoTBEjYDbgGoiefzWepd29I0TWwPw0B5nlN2OlFd17+AcBwOB/I8j8IwpK7rqLheORBkmiYZhsF6K8CiKKIsy2jtzLZt2u12Mp4Bfd+n/X5PlmVxIH6rqooDgiAgx3H4dywQjMogQa7rkq7r/MaAavlN0/xpF8BxHFOSJHQ8Hl/GgZyr6AYYyJUzBEHebjduZ3Uqg3yZa9/3DHa5XGS1m1uGsygKDkQC9C9RYZqmVJalBMHMMO/n65CAz1tGhff7nVqR9C3ATqLlRiwFbapFqHmbgJ9O6NO9rnf5A6ckUMjyoVcVAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
-  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;DNS 원리&apos; title=&apos;DNS 원리&apos; src=&apos;/static/aa8c8160d85c18f44750dbab916a9c74/ca1dc/DNS-%EC%9B%90%EB%A6%AC.png&apos; srcset=&apos;/static/aa8c8160d85c18f44750dbab916a9c74/e7570/DNS-%EC%9B%90%EB%A6%AC.png 170w,
-/static/aa8c8160d85c18f44750dbab916a9c74/f46e7/DNS-%EC%9B%90%EB%A6%AC.png 340w,
-/static/aa8c8160d85c18f44750dbab916a9c74/ca1dc/DNS-%EC%9B%90%EB%A6%AC.png 680w,
-/static/aa8c8160d85c18f44750dbab916a9c74/02d09/DNS-%EC%9B%90%EB%A6%AC.png 1020w,
-/static/aa8c8160d85c18f44750dbab916a9c74/9d567/DNS-%EC%9B%90%EB%A6%AC.png 1360w,
-/static/aa8c8160d85c18f44750dbab916a9c74/7b4c8/DNS-%EC%9B%90%EB%A6%AC.png 2438w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
-  &lt;/a&gt;
-    &lt;/span&gt;
-    &lt;figcaption class=&apos;gatsby-resp-image-figcaption&apos;&gt;DNS 원리&lt;/figcaption&gt;
-  &lt;/figure&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;자신의 PC에 IP 주소뿐만이 아닌 도메인명으로도 접속할 수 있게 하기 위해 DNS 서버에게 자신의 IP주소(&lt;code class=&quot;language-text&quot;&gt;93.184.216.34&lt;/code&gt;)와 도메인명(&lt;code class=&quot;language-text&quot;&gt;example.com&lt;/code&gt;)으로 등록을 요청한다.&lt;/li&gt;
-&lt;li&gt;DNS 서버는 1번의 요청을 받고 해당 도메인명과 IP주소를 매핑하여 서버에 기록한다.&lt;/li&gt;
-&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;example.com&lt;/code&gt;이라는 도메인명을 가진 서버에 접속하고 싶은 클라이언트에서 DNS서버에게 &lt;code class=&quot;language-text&quot;&gt;example.com&lt;/code&gt;도메인명과 함께 IP주소를 응답을 요청한다.&lt;/li&gt;
-&lt;li&gt;DNS서버는 기록되어있는 도메인명과 맵핑된 IP주소를 응답한다.&lt;/li&gt;
-&lt;li&gt;IP주소를 응답받은 클라이언트는 해당 IP주소로 서버에 접속한다.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;지금까지 기본적인 DNS 작동원리를 살펴보았다. 하지만 DNS의 작동원리는 위처럼 간단하지 않다. 좀 더 상세하게 DNS 작동원리에 대해 알아보자.&lt;/p&gt;
-&lt;h3&gt;도메인 계층 구조&lt;/h3&gt;
-&lt;p&gt;우선 도메인 계층 구조를 알아보자. 도메인명은 계층 구조로 되어있으면 맨 오른쪽 생략된 Root(&lt;code class=&quot;language-text&quot;&gt;.&lt;/code&gt;)를 시작으로 뒤에서 앞으로 해석되며 &lt;code class=&quot;language-text&quot;&gt;.&lt;/code&gt; 으로 각 계층의 경계를 표시한다.&lt;/p&gt;
-&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
-      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/7b423c14ec2bbc0bcfd3fa50ffc90ccf/7b4c8/%EB%8F%84%EB%A9%94%EC%9D%B8%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
-    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 56.470588235294116%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABYlAAAWJQFJUiTwAAABc0lEQVQoz51Su6rCQBTMF/kbfoClrY2djfgDluktTBPwlcpOREUk4LNSsRQbDYKgRhTFRzIyBzY3uVwt7sCSs7O7s5PZoz0eD7xeL3ieh/+CZzmezyc03/dBUcuyUCgUUC6X0Wg00G63UalUUKvVZK1er8MwDJimiclkgmq1ilKphGazKYYIamnK3Ww2w3A4RKvVks2se70eOp0OFouFHOx2u7BtG9PpFP1+H+PxGPP5HOfzOXCqKXWCNd2GQe5wOGC/3+NyuQT86XTC8XjE9XrFdrvF7XYTXgRplXBdF7vdLhAizwPr9RqbzUZE6YI869VqJZc4jhNcFhHM5XJIJBJSM2DyFEgmk8hms8Lf73f5jkYjxGIxiSYej6NYLP4IKuTzeei6HggSdJjJZOSxCBUJ802lUpJ9Op3GYDCICiqXv+swFP9pnVoRQdbheXioPg2LqlhUpwRt8+lWxTF8vuo3d5E+/MuRGsRyuZQO+LZP/cUbB1AzN+/xN14AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
-  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;       &apos; title=&apos;       &apos; src=&apos;/static/7b423c14ec2bbc0bcfd3fa50ffc90ccf/ca1dc/%EB%8F%84%EB%A9%94%EC%9D%B8%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0.png&apos; srcset=&apos;/static/7b423c14ec2bbc0bcfd3fa50ffc90ccf/e7570/%EB%8F%84%EB%A9%94%EC%9D%B8%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0.png 170w,
-/static/7b423c14ec2bbc0bcfd3fa50ffc90ccf/f46e7/%EB%8F%84%EB%A9%94%EC%9D%B8%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0.png 340w,
-/static/7b423c14ec2bbc0bcfd3fa50ffc90ccf/ca1dc/%EB%8F%84%EB%A9%94%EC%9D%B8%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0.png 680w,
-/static/7b423c14ec2bbc0bcfd3fa50ffc90ccf/02d09/%EB%8F%84%EB%A9%94%EC%9D%B8%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0.png 1020w,
-/static/7b423c14ec2bbc0bcfd3fa50ffc90ccf/9d567/%EB%8F%84%EB%A9%94%EC%9D%B8%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0.png 1360w,
-/static/7b423c14ec2bbc0bcfd3fa50ffc90ccf/7b4c8/%EB%8F%84%EB%A9%94%EC%9D%B8%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0.png 2438w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
-  &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;위의 그림에서 보이듯이 맨 오른쪽 ‘.’은 Root 도메인이라고 하고, ‘com’은 Top-level 도메인 example 은 Second-level 도메인, blog는 sub 도메인으로 구분 된다.&lt;/p&gt;
-&lt;h3&gt;DNS 서버 계층 구조&lt;/h3&gt;
-&lt;p&gt;DNS 서버는 도메인 계층과 비슷하게 계층적으로 구성된다. 각 DNS 서버는 자신이 담당하는 영역에 대한 도메인을 관리한다.&lt;/p&gt;
-&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
-      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/692bda841c514f39c12a37e5d9830ec7/97114/DNS%EC%84%9C%EB%B2%84-%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
-    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 36.47058823529412%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsTAAALEwEAmpwYAAABZ0lEQVQoz2WRi1LaQBSGff+nqdWZOsU6rYoK7VgoEEWuCRADxEQgJNlNdj83S9uZ2jPz7+65/XsuR0pplFKUpYG5ldbm1lSyySS17pxae8JZa0xzvKZyaV3lHFDl2LzfOOKd6LKwKApJJiTrbUYQJ/jRjijJkVJan1YlVHgnlrAwPz1vcrxwyyiI8OM9QgjSXJh3gruMcFevrLapIRTsM2FjxyZ29pIQ7qWt2hwHwr1UfOsvueh6nBt8n77Y39JC87Uf8KXjUut43M9erT2Rxv74zEVvxuf2lHsvsqP4S1iJrSjLLKqW/huF1v/oRVGQpimZiS/LP60bQjdKuXyYczMICHaSwXLDVaUPl4SJwI1zqzfMQuJcEaYlV48L6n2fSSxw/A2XjkdzEprKzVKcWciH6zandz2mYcLPkc9x/RenDYfVLsdZxHy86fDpxxPrRNpZn9x2jL+HE2xpDhYcX7eotYbshOINmh4QyX1v5MkAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
-  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;DNS       &apos; title=&apos;DNS       &apos; src=&apos;/static/692bda841c514f39c12a37e5d9830ec7/ca1dc/DNS%EC%84%9C%EB%B2%84-%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0.png&apos; srcset=&apos;/static/692bda841c514f39c12a37e5d9830ec7/e7570/DNS%EC%84%9C%EB%B2%84-%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0.png 170w,
-/static/692bda841c514f39c12a37e5d9830ec7/f46e7/DNS%EC%84%9C%EB%B2%84-%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0.png 340w,
-/static/692bda841c514f39c12a37e5d9830ec7/ca1dc/DNS%EC%84%9C%EB%B2%84-%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0.png 680w,
-/static/692bda841c514f39c12a37e5d9830ec7/97114/DNS%EC%84%9C%EB%B2%84-%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0.png 690w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
-  &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;위 예시와 같이 루트 DNS 서버 부터 하위로 com, org 등과 같은 최상위 도메인을 관리하는 DNS 서버가 있으며 그 하위로 yahoo, amazon 등과 같은 2차 도메인을 관리하는 DNS서버 그리고 또 그 하위 도메인을 관리하는 DNS서버가 있다.&lt;/p&gt;
-&lt;p&gt;이렇게 계층적으로 전세계에 수천 수만대의 DNS서버가 협력하여 시스템을 이루고 있다.&lt;/p&gt;
-&lt;aside&gt;
-💡 루트 DNS 서버는 총 13개이며 최상위 도메인, 2차 도메인 등을 관리하는 DNS 서버는 많은 수의 서버가 존재하고 있다.
-&lt;/aside&gt;
-&lt;h4&gt;루트 DNS 서버&lt;/h4&gt;
-&lt;p&gt;루트 DNS 서버는 ICANN 이라는 비영리 단체에서 관리하는 DNS 서버이며, 전 세계에 13대의 루트 DNS 서버가 존재한다.  &lt;del&gt;즉 13대의 루트 DNS 서버를 찾아내어 파괴하면 인터넷을 마비 시킬수 있다&lt;/del&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class=&apos;gatsby-resp-image-wrapper&apos; style=&apos;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 680px; margin-bottom: 16px;&apos;&gt;
-      &lt;a class=&apos;gatsby-resp-image-link&apos; href=&apos;/static/08c6bbbcfbb67a06505204f4fd6b65fe/9d8cf/%EB%A3%A8%ED%8A%B8%EB%84%A4%EC%9E%84%EC%84%9C%EB%B2%84%ED%91%9C.png&apos; style=&apos;display: block&apos; target=&apos;_blank&apos; rel=&apos;noopener&apos;&gt;
-    &lt;span class=&apos;gatsby-resp-image-background-image&apos; style=&quot;padding-bottom: 74.11764705882352%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAsTAAALEwEAmpwYAAACT0lEQVQ4y1VT2Y6jMBDM///caqV9WymaBALY+LY5knnorWrI7MyDRUS6y3VxGSYr3TDLvZ9ktEE+OjyNEx+KzL7IbQhifRYfi3SPSR6jlXGa9cnz6/cf3e0HI8Z6uTxGpwCpVHEhCS+YXZBb95DrfZSP3uD/WabzmNmLcVlKXWQCgb/XGy5OepnH/mUwUZwPEvICwKy/c2m6HHOVZd2kLas+Uy76LuRVXq9PmTE/zZgHeDdFqcsml9ESMJ4LVZf428cs6/aU/fmUbT9OhoraVvFpkVg2MIUiyE5lEY9LOKOAAcu5HoBcegPGsgJ0Pw8Aa4PUpmoS5q2L8NFIwSWlbSegCfAgqCdkF2JSiWTNoS9ADMeU1efOFDFh0RDv/Yg5MExN2npKtjC64WU8AcmQt9OTbf8P+PZwmKni+RUGyVhfQQSA/YRaIFUuc8GHqAMcXtZdtm+SVUEqcn0kcWnVEFmdUle1RyX3Y1CGLlYdZmWcdjDB7J8eUjLtoeTRNxBJkO2VQK7H7GWCZIKwKhGAPDR5hocM6p3wdkpmgAylgb3RUKzWpiy77GRo5qiFZB0I+j1lAtPbikP5uZSzEUcPnT9qwzmHL4mzZw8PhqwNQ2E1CPguOhOn4SEEFN5oD/fnC19N0FASdvvJaWCozSG5oiqURIasDYNi17j4lkxAY/BpxqbvLRj26CGLzeTJFJ/eEUpIByuC+1T1dk0ORi9nKF4ZWiR8MGQo/XB8KQ+bdA4eJvVw3TaVSoYEIXiF0T9CSaiL8wq4aOpVbaEd9QzlH9gNdmDBXs6KAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;&gt;&lt;/span&gt;
-  &lt;img class=&apos;gatsby-resp-image-image&apos; alt=&apos;       &apos; title=&apos;       &apos; src=&apos;/static/08c6bbbcfbb67a06505204f4fd6b65fe/ca1dc/%EB%A3%A8%ED%8A%B8%EB%84%A4%EC%9E%84%EC%84%9C%EB%B2%84%ED%91%9C.png&apos; srcset=&apos;/static/08c6bbbcfbb67a06505204f4fd6b65fe/e7570/%EB%A3%A8%ED%8A%B8%EB%84%A4%EC%9E%84%EC%84%9C%EB%B2%84%ED%91%9C.png 170w,
-/static/08c6bbbcfbb67a06505204f4fd6b65fe/f46e7/%EB%A3%A8%ED%8A%B8%EB%84%A4%EC%9E%84%EC%84%9C%EB%B2%84%ED%91%9C.png 340w,
-/static/08c6bbbcfbb67a06505204f4fd6b65fe/ca1dc/%EB%A3%A8%ED%8A%B8%EB%84%A4%EC%9E%84%EC%84%9C%EB%B2%84%ED%91%9C.png 680w,
-/static/08c6bbbcfbb67a06505204f4fd6b65fe/02d09/%EB%A3%A8%ED%8A%B8%EB%84%A4%EC%9E%84%EC%84%9C%EB%B2%84%ED%91%9C.png 1020w,
-/static/08c6bbbcfbb67a06505204f4fd6b65fe/9d8cf/%EB%A3%A8%ED%8A%B8%EB%84%A4%EC%9E%84%EC%84%9C%EB%B2%84%ED%91%9C.png 1216w&apos; sizes=&apos;(max-width: 680px) 100vw, 680px&apos; style=&apos;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&apos; loading=&apos;lazy&apos; decoding=&apos;async&apos;&gt;
-  &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
-&lt;h4&gt;DNS 서버 탐색 과정&lt;/h4&gt;
-&lt;p&gt;DNS 서버는 각자 담당하는 도메인을 관리하게 되며 상위 DNS 서버는 하위 DNS 서버에 대한 정보를 알고있다. 즉 상위 DNS 서버에 도메인을 요청하면 자신이 알고있는 하위 DNS 서버의 IP주소 목록을 반환하고 해당 IP주소를 통해 다시 하위 DNS를 탐색을 하는 과정을 반복하여 최종적으로 목적지 주소를 알고 있는 DNS로 도달하게 된다.&lt;/p&gt;
-&lt;p&gt;클라이언트에서 &lt;a href=&quot;http://example.com&quot;&gt;example.com&lt;/a&gt; 을 접속한다고 가정해보자.
-&lt;del&gt;(그림 실력이 엉망이라 죄송합니다ㅠ)&lt;/del&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;images/DNS-%EC%84%9C%EB%B2%84-%ED%83%90%EC%83%89-%EA%B3%BC%EC%A0%95.png&quot;&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;모든 DNS 서버는 루트 DNS 서버의 주소를 알고 있다.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;클라이언트 PC 브라우저에서 &lt;a href=&quot;http://example.com&quot;&gt;example.com&lt;/a&gt; 을 입력하면 운영체제에 설정된 DNS 서버에 요청한다.&lt;/li&gt;
-&lt;li&gt;DNS 서버에 캐시된 example.com의 IP 주소가 존재하면 해당 IP 주소를 반환하고 캐시된 정보가 없으면 ROOT DNS 서버에 요청한다.&lt;/li&gt;
-&lt;li&gt;ROOT DNS 서버는 example.com의 IP주소를 알지 못함으로 최상위 도메인(com)에 대해 알고 있는 최상위 도메인을 관리하는 DNS 서버의 IP 주소를 응답한다.&lt;/li&gt;
-&lt;li&gt;DNS 서버는 루트 DNS 서버가 응답한 최상위 DNS 서버의 IP 주소 목록을 확인하여 다시 최상위 DNS 서버에게 요청한다.&lt;/li&gt;
-&lt;li&gt;최상위 DNS 서버는 2차 도메인(example)을 알지 못함으로 2차 도메인을 알고 있는 DNS 서버의 IP 주소를 응답한다.&lt;/li&gt;
-&lt;li&gt;DNS 서버는 최상위 DNS 서버가 응답한 2차 DNS 서버의 IP 주소 목록을 확인하고 2차 DNS 서버에게 요청한다.&lt;/li&gt;
-&lt;li&gt;2차 DNS 서버는 example.com에 대한 IP 주소를 알고 있기 때문에 해당 하는 IP 주소를 반환한다.&lt;/li&gt;
-&lt;li&gt;DNS 서버는 최종목적지의 IP주소를 응답받아 해당 IP를 캐시한 후 클라이언트에게 IP 주소를 응답한다.&lt;/li&gt;
-&lt;li&gt;클라이언트 PC는 응답받은 IP주소로 서버에 접속한다.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2&gt;마무리&lt;/h2&gt;
-&lt;p&gt;오늘 글에서는 DNS란 무엇인지, 왜 사용하는지, 어떻게 작동하는지에 대해 알아보았습니다. DNS는 인터넷 세상에서 매우 중요한 역할을 하는 시스템이라고 생각합니다. 오늘 글을 통해서 DNS 시스템에 대해 알고싶은 누군가에게 조금이나마 도움이되었으면 합니다 :)&lt;/p&gt;
-&lt;h2&gt;참고&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://youtube.com/playlist?list=PLuHgQVnccGMCI75J-rC8yZSVGZq3gYsFp&quot;&gt;WEB2-Domain Name System&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.yes24.com/Product/Goods/90640081&quot;&gt;성공과 실패를 결정하는 1%의 네트워크 원리&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.yes24.com/Product/Goods/32203210&quot;&gt;TCP/IP 쉽게, 더 쉽게&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://commons.wikimedia.org/wiki/File:Dns-server-hierarchy.gif&quot;&gt;Dns-server-hierarchy&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=mpQZVYPuDGU&amp;#x26;t=188s&quot;&gt;How a DNS Server (Domain Name System) works.&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content:encoded></item></channel></rss>
