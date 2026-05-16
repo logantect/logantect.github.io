@@ -118,6 +118,16 @@ module.exports = {
           {
             resolve: "gatsby-remark-static-images",
           },
+          {
+            resolve: `gatsby-remark-mermaid`,
+            options: {
+              theme: "default",
+              viewport: {
+                width: 800,
+                height: 600,
+              },
+            },
+          },
         ],
       },
     },
